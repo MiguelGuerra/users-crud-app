@@ -1,0 +1,36 @@
+<!-- <div class="parent">
+    <div 
+        *ngFor="let user of users" 
+        class="child">
+            <p>{{ user.name }}</p>
+    </div>
+  </div> -->
+<ul class="cards {{language}}">
+    <li class="user-card-item" *ngFor="let user of users" >
+        <div class="user-card">
+            <div 
+                class="user-card-pb card__image--fence"
+                style="background-image: url(https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg)"></div>
+            <div 
+                class="user-card-img"
+                style="background-image: url(https://wallpapershome.com/images/pages/pic_hs/181.jpg);"></div>
+            <div class="user-card-cont">
+                <div class="user-card-title">{{ user.name }}</div>
+                <p class="user-id">
+                    <b>{{ displayNames.id }}:</b> 
+                    {{ user.id }}
+                </p>
+                <p class="user-card-text">{{ user.email }}</p>
+            </div>
+            <div class="btn-row">
+                <button (click)="editUser(user.id)">
+                    <i class="fas fa-edit edit-btn"></i>
+                </button>
+                <button (click)="deleteUser(user.id)">
+                    <i
+                    class="fas fa-trash-alt edit-btn red"></i>
+                </button>
+            </div>
+        </div>
+    </li>
+</ul>

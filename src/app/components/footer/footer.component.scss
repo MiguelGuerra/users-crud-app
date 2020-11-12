@@ -1,0 +1,42 @@
+@import '../../../assets/scss/variables.scss';
+
+footer{
+  //position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #051821;
+  color: white;
+  .copy-side {
+    font-size: 13px;
+    padding-top: 14px;
+    padding-left: 13px;
+  }
+  .social-side {
+    color: $color2;
+    width: 20%;
+    text-align: right;
+    padding-top: 7px;
+    padding-right: 18px;
+    .social-media {
+      span {
+        font-size: 25px;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+footer.ar{
+  direction: rtl;
+  .copy-side {
+    padding-right: 13px;
+  }
+  .social-side {
+    text-align: left;
+    padding-right: 18px;
+  }
+}

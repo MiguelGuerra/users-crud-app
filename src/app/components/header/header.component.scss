@@ -1,0 +1,64 @@
+@import '../../../assets/scss/variables.scss';
+
+.navbar {
+    overflow: hidden;
+    background-color: lighten($color3, 6%);
+    width: 100%;
+    a {
+        float: left;
+        display: block;
+        color: white;
+        font-weight: 400;
+        text-align: center;
+        padding: 10px 16px;
+        text-decoration: none;
+    }
+    .nav-side {
+        vertical-align: middle;
+        display: inline-block;
+        width: 79%;
+        text-align: left;
+    }
+    .lang-side {
+        display: inline-block;
+        width: 20%;
+        text-align: right;
+        .icon {
+            width: 25px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 2px;
+            padding: 5px;
+            &:hover {
+                background-color: lighten($color3, 10%);
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.navbar.ar {
+    direction: rtl;
+    a {
+        float: right;
+    }
+    .nav-side {
+        text-align: right;
+    }
+    .lang-side {
+        text-align: left;
+    }
+}
+
+.active-link {
+    background: white;
+    color: $color2 !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    &:hover {
+        background: white !important;
+        color: $color2  !important;
+    }
+}
