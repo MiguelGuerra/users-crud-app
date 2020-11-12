@@ -7,9 +7,16 @@
     <ul class="cards {{language}}">
         <li class="user-card-item" *ngFor="let user of users">
             <div class="user-card">
-                <div class="user-card-pb card__image--fence"
-                    style="background-image: url(https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg)">
-                </div>
+                <div *ngIf="user.avatarUrl; then hasAvatar else defaultAvatar"></div>
+                <ng-template #hasAvatar>
+                    <div class="user-card-pb card__image--fence" style="background-image: url({{user.avatarUrl}})">
+                    </div>
+                </ng-template>
+                <ng-template #defaultAvatar>
+                    <div class="user-card-pb card__image--fence"
+                        style="background-image: url(https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg)">
+                    </div>
+                </ng-template>
                 <div class="user-card-img"
                     style="background-image: url(https://wallpapershome.com/images/pages/pic_hs/181.jpg);"></div>
                 <div class="user-card-cont">

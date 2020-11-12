@@ -34,7 +34,14 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUserInfo(){
-    this.mainService.updateUserById(this.userId, "hugo", "email novo");
+    this.mainService.updateUserById(
+      this.userId, 
+        "hugo", 
+        "email novo", 
+        "", 
+        "", 
+        "../../../assets/img/avatars/avatar1.png");
+
     this.router.navigateByUrl('/usersList');
   }
 

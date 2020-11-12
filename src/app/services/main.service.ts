@@ -11,42 +11,44 @@ export class MainService implements OnInit {
       name: 'Miguel',
       job: 'UI Developer',
       email: "testxcvbn@test.com",
-      role: 'Admin'
+      role: 'Admin',
     },
     {
       id: 2,
       name: 'Manuel',
       job: 'CEO',
       email: "testxcvbn@test.com",
-      role: 'Admin'
+      role: 'Admin',
+      avatarUrl: '../../../assets/img/avatars/avatar3.png'
     },
     {
       id: 3,
       name: 'Surajit',
       job: 'Front-end Developer',
       email: "testxcvbn@test.com",
-      role: 'Normal'
+      role: 'Normal',
     },
     {
       id: 4,
       name: 'Sergio',
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
-      role: 'Normal'
+      role: 'Normal',
     },
     {
       id: 5,
       name: 'Sergio',
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
-      role: 'Normal'
+      role: 'Normal',
     },
     {
       id: 6,
       name: 'Sergio',
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
-      role: 'Normal'
+      role: 'Normal',
+      avatarUrl: '../../../assets/img/avatars/avatar3.png'
     }
   ]
 
@@ -74,7 +76,7 @@ export class MainService implements OnInit {
     }
   }
 
-  updateUserById(id, name?: string, email?: string, job?: string, role?: string ) {
+  updateUserById(id, name?: string, email?: string, job?: string, role?: string, avatarUrl?: string ) {
     let selectedUser = this.usersList.find(obj => {
       return obj.id == id;
     })
@@ -82,6 +84,7 @@ export class MainService implements OnInit {
     selectedUser.email = email;
     selectedUser.job = job;
     selectedUser.role = role;
+    selectedUser.avatarUrl = avatarUrl;
   }
 
   
