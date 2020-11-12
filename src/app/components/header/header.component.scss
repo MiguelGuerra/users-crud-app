@@ -1,8 +1,11 @@
 @import '../../../assets/scss/variables.scss';
 
+.header-container {
+    padding: 0 $containerPadding;
+    background-color: lighten($color3, 6%);
+}
 .navbar {
     overflow: hidden;
-    background-color: lighten($color3, 6%);
     width: 100%;
     a {
         float: left;

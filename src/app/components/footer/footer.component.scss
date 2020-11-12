@@ -1,5 +1,9 @@
 @import '../../../assets/scss/variables.scss';
 
+.footer-container {
+  padding: 0 $containerPadding;
+  background-color: $color5;
+}
 footer{
   //position: absolute;
   bottom: 0;
@@ -7,7 +11,6 @@ footer{
   height: 42px;
   display: flex;
   justify-content: space-between;
-  background-color: #051821;
   color: white;
   .copy-side {
     font-size: 13px;
@@ -15,7 +18,7 @@ footer{
     padding-left: 13px;
   }
   .social-side {
-    color: $color2;
+    color: white;
     width: 20%;
     text-align: right;
     padding-top: 7px;
