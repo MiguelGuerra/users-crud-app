@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFoundPageComponent,
     EditUserComponent,
     LoadingComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

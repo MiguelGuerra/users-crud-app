@@ -44,4 +44,8 @@ export class UsersListComponent implements OnInit {
   deleteUser(id: number) {
     this.mainService.deleteUserById(id);
   }
+
+  goToAddUser() {
+    this.router.navigateByUrl('addUser');
+  }
 }

@@ -1,21 +1,4 @@
-// @import '../../../assets/scss/variables.scss';
-
-// .parent {
-//     display: flex;
-//     flex-wrap: wrap;
-//     .child {
-//         width: 24%;
-//         margin: .5%;
-//         height: 100px;
-//         background-color: $smooth-grey;
-//         cursor: pointer;
-//         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-//         &:hover {
-//             background-color: lighten($smooth-grey, 4%);
-//             transition: all .2s;
-//         }
-//     }
-// }
+@import '../../../assets/scss/variables.scss';
 
 .cards {
     display: flex;
@@ -51,9 +34,8 @@
         vertical-align: middle;
     }
     .user-card-item {
-        width: 22%;
-        margin: .5%;
-        padding: 1rem;
+        width: 18%;
+        padding: 1%;
   }
   .user-card {
     background-color: white;
@@ -79,7 +61,7 @@
     flex-direction: column;
     padding: 1rem;
     padding-top: 60px;
-    padding-bottom: 2vw;
+    //padding-bottom: 2vw;
   }
   .user-card-pb {
     background-position: center center;
@@ -125,7 +107,7 @@
     button{
         border: none;
         background-color: #f2f2f2;
-        padding: 15px 0px;
+        padding: 10px 0px;
         width:100%;
         font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: #696969;
@@ -141,14 +123,22 @@
   }
 }
 
+.container {
+  padding: 0 $containerPadding;
+  .add-new-user {
+    margin-top: 25px;
+  }
+  .button-container{
+    text-align: right;
+    padding: 0 16px;
+  }
+}
+
 .cards.ar {
   direction: rtl;
 }
-  
-  
-  
-  
-  
-  
-  
+
+.container.ar .button-container{
+  text-align: left;
+}
   

@@ -74,4 +74,26 @@ export class MainService implements OnInit {
     }
   }
 
+  updateUserById(id, name?: string, email?: string, job?: string, role?: string ) {
+    let selectedUser = this.usersList.find(obj => {
+      return obj.id == id;
+    })
+    selectedUser.name = name;
+    selectedUser.email = email;
+    selectedUser.job = job;
+    selectedUser.role = role;
+  }
+
+  
+  addUser(name: string, email: string, job: string, role: string ) {
+    let newId = 10;
+    let createdUser= {
+      id: newId,
+      name: name,
+      email: email,
+      job: job,
+      role: role
+    }
+    this.usersList.push(createdUser);
+  }
 }

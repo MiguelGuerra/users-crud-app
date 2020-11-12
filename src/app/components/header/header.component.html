@@ -1,31 +1,25 @@
-<app-user-info></app-user-info>
-<div class="navbar {{ language }}">
-  <div class="nav-side">
-    <div class="nav-tab">
-      <a 
-        class="effect-underline" 
-        routerLink="usersList"
-        routerLinkActive="active-link">{{displayNames.users}}</a>
+<div>
+  <app-user-info></app-user-info>
+  <div class="navbar {{ language }}">
+    <div class="nav-side">
+      <div class="nav-tab">
+        <a class="effect-underline" routerLink="usersList" routerLinkActive="active-link">{{displayNames.users}}</a>
+      </div>
+      <div class="nav-tab">
+        <a class="effect-underline" routerLink="departments"
+          routerLinkActive="active-link">{{displayNames.departments}}</a>
+      </div>
+      <div class="nav-tab">
+        <a class="effect-underline" routerLink="about" routerLinkActive="active-link">{{displayNames.about}}</a>
+      </div>
     </div>
-    <div class="nav-tab">
-      <a 
-        class="effect-underline" 
-        routerLink="departments"
-        routerLinkActive="active-link">{{displayNames.departments}}</a>
-    </div>
-    <div class="nav-tab">
-      <a 
-        class="effect-underline" 
-        routerLink="about"
-        routerLinkActive="active-link">{{displayNames.about}}</a>
-    </div>
-  </div>
-  <div class="lang-side">
-    <div class="en-icon icon" (click)="changeLanguage('en')" [ngClass]="language == 'en' ? 'active-link' : ''">
-      <img src="../../../assets/img/united-kingdom.svg" alt="english">
-    </div>
-    <div class="ar-icon icon" (click)="changeLanguage('ar')" [ngClass]="language == 'ar' ? 'active-link' : ''">
-      <img src="../../../assets/img/saudi-arabia.svg" alt="arabic">
+    <div class="lang-side">
+      <div class="en-icon icon" (click)="changeLanguage('en')" [ngClass]="language == 'en' ? 'active-link' : ''">
+        <img src="../../../assets/img/united-kingdom.svg" alt="english">
+      </div>
+      <div class="ar-icon icon" (click)="changeLanguage('ar')" [ngClass]="language == 'ar' ? 'active-link' : ''">
+        <img src="../../../assets/img/saudi-arabia.svg" alt="arabic">
+      </div>
     </div>
   </div>
 </div>
