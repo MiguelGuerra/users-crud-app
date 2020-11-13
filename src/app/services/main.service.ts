@@ -92,7 +92,14 @@ export class MainService implements OnInit {
 
   
   addUser(name: string, email: string, job: string, role: string, avatarUrl?: string ) {
-    let newId = 10;
+    // let lastUserOfArray = [this.usersList.length-1];
+    // console.log(lastUserOfArray);
+    // let newId = lastUserOfArray.id + 1;
+    let numberOfUsers = this.usersList.length;
+    let newId = numberOfUsers + 1;
+    console.log(newId);
+
+    //let newId = 10;
     let createdUser = {
       id: newId,
       name: name,
