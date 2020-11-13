@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
@@ -19,12 +20,24 @@ export class AddUserComponent implements OnInit {
   pageName = 'addUser';
   displayNames: any = {};
 
-  newUser = {
+  //info of new user to create
+  userNewInfo = {
     name: '',
-    email: '', 
-    job: '', 
-    role: ''
-  }
+    email: '',
+    job: '',
+    role: '',
+    avatarUrl: ''
+  };
+
+  //this could be a service
+  avatarsList: Array<string> = [
+    '../../../assets/img/avatars/avatar1.png',
+    '../../../assets/img/avatars/avatar2.png',
+    '../../../assets/img/avatars/avatar3.png',
+    '../../../assets/img/avatars/avatar4.png',
+    '../../../assets/img/avatars/avatar5.png'
+  ];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -52,10 +65,38 @@ export class AddUserComponent implements OnInit {
   goBack(): void {
     this.router.navigateByUrl('/usersList');
   }
+  
+  //for template-driven form
+  onSubmit(form: NgForm) { 
+    if(form.invalid) {
+      alert("Invalid Input");
+    } else {
+      this.createNewUser();
+    }
+  }
 
   createNewUser() {
-    this.mainService.addUser(this.newUser.name, this.newUser.email, this.newUser.job, this.newUser.role)
+    this.mainService.addUser(
+      this.userNewInfo.name, 
+      this.userNewInfo.email, 
+      this.userNewInfo.job, 
+      this.userNewInfo.role, 
+      this.userNewInfo.avatarUrl)
+      console.log(this.userNewInfo.avatarUrl);
     this.router.navigateByUrl('/usersList');
+  }
+
+  clearForm() {
+    this.userNewInfo.name = '';
+    this.userNewInfo.email = '';
+    this.userNewInfo.job = '';
+    this.userNewInfo.role = '';
+    this.userNewInfo.avatarUrl = '';
+  }
+
+  selectAvatar(selectedAvatar) {
+    this.userNewInfo.avatarUrl = selectedAvatar;
+    console.log(selectedAvatar);
   }
 
 }

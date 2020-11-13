@@ -34,12 +34,44 @@
     max-width: 1200px;
     margin: 0 auto;
     display: block;
+    padding: 50px;
     .example-header-image {
         background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
         background-size: cover;
     }
     .example-container .mat-form-field + .mat-form-field {
         margin-left: 8px;
+    }
+    .info-section {
+        display: inline-block;
+        width: 50%;
+        mat-form-field {
+            width: 100%;
+        }
+    }
+    .avatar-container {
+        display: inline-block;
+        width: 50%;
+        .avatar-section {
+            display: flex;
+            flex-wrap: wrap;
+            .avatar-wapper {
+                width: 18%;
+                padding: 1%;
+                text-align: center;
+                &:hover {
+                    background-color: lighten($color3, 60%);
+                    transition: all .3s;
+                    cursor: pointer;
+                }
+                &.active-avatar {
+                    background-color: lighten($color3, 40%);
+                }
+                img {
+                    width: 100px;
+                }
+            }
+        }
     }
 }
   

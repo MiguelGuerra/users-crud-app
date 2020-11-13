@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,6 +47,7 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,

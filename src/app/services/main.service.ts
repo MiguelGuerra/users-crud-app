@@ -91,14 +91,15 @@ export class MainService implements OnInit {
   }
 
   
-  addUser(name: string, email: string, job: string, role: string ) {
+  addUser(name: string, email: string, job: string, role: string, avatarUrl?: string ) {
     let newId = 10;
-    let createdUser= {
+    let createdUser = {
       id: newId,
       name: name,
       email: email,
       job: job,
-      role: role
+      role: role,
+      avatarUrl: avatarUrl
     }
     this.usersList.push(createdUser);
   }
