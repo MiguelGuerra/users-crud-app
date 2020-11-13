@@ -32,7 +32,7 @@
                     </p>
                     <p class="user-card-text">{{ user.email }}</p>
                 </div>
-                <div class="btn-row">
+                <div class="btn-row" *ngIf="userType == 'Admin'">
                     <button (click)="editUser(user.id)">
                         <i class="fas fa-edit edit-btn"></i>
                     </button>

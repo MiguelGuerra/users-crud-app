@@ -16,6 +16,7 @@ export class UsersListComponent implements OnInit {
   infoTitle: string = '';
   iconTitle: string = '';
 
+  userType='';
   language = '';
   pageName = 'usersList';
   displayNames: any = {};
@@ -35,6 +36,9 @@ export class UsersListComponent implements OnInit {
     });
 
     this.users = this.mainService.getUsers();
+
+    //know the user type from login
+    this.userType = this.headerService.getUserType()
   }
 
   updateLanguage(language) {
