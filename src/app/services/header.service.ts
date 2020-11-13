@@ -21,6 +21,7 @@ export class HeaderService {
   setUserType(type) {
     this.userType = type;
   }
+  
   // Method for getting language
   getLanguage() {
     return this.language;
