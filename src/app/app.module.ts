@@ -22,6 +22,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     EditUserComponent,
     LoadingComponent,
     ConfirmationModalComponent,
-    AddUserComponent
+    AddUserComponent,
+    PageTitleComponent
   ],
   imports: [
     BrowserModule,

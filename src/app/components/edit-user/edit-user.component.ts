@@ -11,6 +11,15 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
+  //for the title child component
+  pageTitle: string = '';
+  infoTitle: string = '';
+  iconTitle: string = '';
+
+  language = '';
+  pageName = 'editUser';
+  displayNames: any = {};
+
   userId;
   userToEdit: User;
 
@@ -27,20 +36,35 @@ export class EditUserComponent implements OnInit {
     let selectedUser = this.mainService.getUserById(userId);
     this.userId = userId;
     this.userToEdit = selectedUser;
+
+    this.updateLanguage(this.headerService.getLanguage());
+    this.headerService.language$.subscribe(language => {
+      this.updateLanguage(language);
+    });
   }
 
+  updateLanguage(language) {
+    this.language = language;
+    this.displayNames = this.constantService.displayNames[this.language][this.pageName];
+
+    //for the child title component
+    this.pageTitle = this.displayNames.pageTitle;
+    this.infoTitle = this.displayNames.infoTitle;
+    this.iconTitle = this.displayNames.iconTitle;
+  }
+  
   goBack(): void {
     this.router.navigateByUrl('/usersList');
   }
 
-  updateUserInfo(){
+  updateUserInfo() {
     this.mainService.updateUserById(
-      this.userId, 
-        "hugo", 
-        "email novo", 
-        "", 
-        "", 
-        "../../../assets/img/avatars/avatar1.png");
+      this.userId,
+      "hugo",
+      "email novo",
+      "",
+      "",
+      "../../../assets/img/avatars/avatar1.png");
 
     this.router.navigateByUrl('/usersList');
   }

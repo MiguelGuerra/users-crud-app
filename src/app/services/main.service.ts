@@ -12,6 +12,7 @@ export class MainService implements OnInit {
       job: 'UI Developer',
       email: "testxcvbn@test.com",
       role: 'Admin',
+      avatarUrl: '../../../assets/img/avatars/avatar1.png'
     },
     {
       id: 2,
@@ -26,7 +27,7 @@ export class MainService implements OnInit {
       name: 'Surajit',
       job: 'Front-end Developer',
       email: "testxcvbn@test.com",
-      role: 'Normal',
+      role: 'Normal'
     },
     {
       id: 4,
@@ -34,6 +35,7 @@ export class MainService implements OnInit {
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
       role: 'Normal',
+      avatarUrl: '../../../assets/img/avatars/avatar2.png'
     },
     {
       id: 5,
@@ -41,6 +43,7 @@ export class MainService implements OnInit {
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
       role: 'Normal',
+      avatarUrl: '../../../assets/img/avatars/avatar4.png'
     },
     {
       id: 6,
@@ -48,7 +51,7 @@ export class MainService implements OnInit {
       job: 'Full stack Developer',
       email: "testxcvbn@test.com",
       role: 'Normal',
-      avatarUrl: '../../../assets/img/avatars/avatar3.png'
+      avatarUrl: '../../../assets/img/avatars/avatar5.png'
     }
   ]
 

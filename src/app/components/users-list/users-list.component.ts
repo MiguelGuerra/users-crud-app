@@ -11,6 +11,11 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
+  //for the title child component
+  pageTitle: string = '';
+  infoTitle: string = '';
+  iconTitle: string = '';
+
   language = '';
   pageName = 'usersList';
   displayNames: any = {};
@@ -35,6 +40,11 @@ export class UsersListComponent implements OnInit {
   updateLanguage(language) {
     this.language = language;
     this.displayNames = this.constantsService.displayNames[this.language][this.pageName];
+    
+    //for the child title component
+    this.pageTitle = this.displayNames.pageTitle;
+    this.infoTitle = this.displayNames.infoTitle;
+    this.iconTitle = this.displayNames.iconTitle;
   }
 
   editUser(id: number) {

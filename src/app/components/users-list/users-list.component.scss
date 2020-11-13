@@ -36,6 +36,10 @@
     .user-card-item {
         width: 18%;
         padding: 1%;
+        &:hover {
+          padding-top: .5%;
+          transition: all .3s;
+        }
   }
   .user-card {
     background-color: white;
@@ -131,6 +135,10 @@
   .button-container{
     text-align: right;
     padding: 0 16px;
+  }
+  &.container-users-list {
+    
+    margin-bottom: 35px;
   }
 }
 

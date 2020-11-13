@@ -10,6 +10,15 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit { 
+  //for the title child component
+  pageTitle: string = '';
+  infoTitle: string = '';
+  iconTitle: string = '';
+
+  language = '';
+  pageName = 'addUser';
+  displayNames: any = {};
+
   newUser = {
     name: '',
     email: '', 
@@ -24,6 +33,20 @@ export class AddUserComponent implements OnInit {
     private headerService: HeaderService) { }
 
   ngOnInit(): void {
+    this.updateLanguage(this.headerService.getLanguage());
+    this.headerService.language$.subscribe(language => {
+      this.updateLanguage(language);
+    });
+  }
+
+  updateLanguage(language) {
+    this.language = language;
+    this.displayNames = this.constantService.displayNames[this.language][this.pageName];
+
+    //for the child title component
+    this.pageTitle = this.displayNames.pageTitle;
+    this.infoTitle = this.displayNames.infoTitle;
+    this.iconTitle = this.displayNames.iconTitle;
   }
 
   goBack(): void {

@@ -48,13 +48,23 @@ export class ConstantsService {
         logout: 'Logout'
       },
       usersList: {
-        id: 'id'
+        id: 'id',
+        pageTitle: 'Users',
+        infoTitle: 'List of users',
+        iconTitle: 'fas fa-users'
       },
       footer: {
         copyright: 'Copyright © 2020 The Executive Council of Dubai - All rights reserved'
       },
       editUser: {
-
+        pageTitle: 'Edit User',
+        infoTitle: 'Edit the user information',
+        iconTitle: 'fas fa-user-edit'
+      },
+      addUser: {
+        pageTitle: 'Add User',
+        infoTitle: 'Ceate a new user',
+        iconTitle: 'fas fa-user-plus'
       },
       departmentsList: {
 
@@ -83,10 +93,20 @@ export class ConstantsService {
         copyright: 'حقوق النشر © 2020 المجلس التنفيذي لإمارة دبي - جميع الحقوق محفوظة'
       },
       usersList: {
-        id: 'هوية شخصية'
+        id: 'هوية شخصية',
+        pageTitle: 'المستخدمون',
+        infoTitle: 'قائمة المستخدمين',
+        iconTitle: 'fas fa-users'
       },
       editUser: {
-
+        pageTitle: 'تحرير العضو',
+        infoTitle: 'قم بتحرير معلومات المستخدم',
+        iconTitle: 'fas fa-user-edit'
+      },
+      addUser: {
+        pageTitle: 'إضافة مستخدم',
+        infoTitle: 'إنشاء مستخدم جديد',
+        iconTitle: 'fas fa-user-plus'
       },
       departmentsList: {
 

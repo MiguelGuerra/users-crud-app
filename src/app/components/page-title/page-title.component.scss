@@ -1,0 +1,31 @@
+@import '../../../assets/scss/variables.scss';
+
+.container {
+    padding-top: 30px;
+    .title-wrapper {
+        width: 100%;
+        .title-icon {
+            display: inline-block;
+            width: 45px;
+            i {
+                font-size: 30px;
+            }
+        }
+        .page-title {
+            display: inline-block;
+            h1 {
+                font-size: 30px;
+                font-weight: 200;
+                margin: 0;
+            }
+        }
+    }
+    .page-info {
+        margin: 0;
+        color: $info-grey;
+    }
+}
+
+.container.ar {
+    direction: rtl;
+}
