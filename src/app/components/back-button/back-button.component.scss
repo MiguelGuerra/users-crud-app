@@ -1,0 +1,18 @@
+@import '../../../assets/scss/variables.scss';
+
+button {
+    background-color: $color3;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    i {
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    span{
+        vertical-align: middle;
+    }
+    &:hover {
+        background-color: lighten($color3, 10%);
+    }
+}

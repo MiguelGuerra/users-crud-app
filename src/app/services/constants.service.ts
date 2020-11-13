@@ -39,6 +39,9 @@ export class ConstantsService {
   //Translations en/ar
   displayNames = {
     en: {
+      layout: {
+        back: 'Back'
+      },
       header: {
         users: 'Users',
         departments: 'Departments',
@@ -81,6 +84,9 @@ export class ConstantsService {
       }
     },
     ar: {
+      layout: {
+        back: 'عودة'
+      },
       header: {
         users: 'المستخدمون',
         departments: 'الإدارات',

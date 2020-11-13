@@ -1,0 +1,17 @@
+<button mat-raised-button (click)="goBack()">
+    <div *ngIf="language == 'en'; then enIcon; else arIcon"></div>
+    <ng-template #enIcon>
+        <span>
+            <i class="fas fa-angle-left"></i>
+        </span>
+    </ng-template>
+    <ng-template #arIcon>
+        <span>
+            <i class="fas fa-angle-right"></i>
+        </span>
+    </ng-template>
+
+    <span>
+        {{displayNames.back}}
+    </span>
+</button>

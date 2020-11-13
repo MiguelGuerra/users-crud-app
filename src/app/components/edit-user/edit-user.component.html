@@ -4,8 +4,8 @@
     [iconTitle]="iconTitle"
     [language]="language">
 </app-page-title>
-<div>
-    <button (click)="goBack()">Back</button>
+<div class="container {{language}}">
+    <app-back-button></app-back-button>
 </div>
 <mat-card class="user-card">
     <mat-card-header>

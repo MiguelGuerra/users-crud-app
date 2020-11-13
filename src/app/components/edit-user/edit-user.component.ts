@@ -52,10 +52,6 @@ export class EditUserComponent implements OnInit {
     this.infoTitle = this.displayNames.infoTitle;
     this.iconTitle = this.displayNames.iconTitle;
   }
-  
-  goBack(): void {
-    this.router.navigateByUrl('/usersList');
-  }
 
   updateUserInfo() {
     this.mainService.updateUserById(
