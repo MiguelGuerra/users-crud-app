@@ -1,0 +1,19 @@
+.container {
+    margin-top: 30px;
+    table {
+        width: 100%;
+      }
+      
+      .mat-form-field {
+        font-size: 18px;
+        width: 20%;
+      }
+      
+      td, th {
+        width: 25%;
+      }
+}
+
+.container.ar {
+    direction: rtl;
+}
