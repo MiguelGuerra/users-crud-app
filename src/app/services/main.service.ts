@@ -1,10 +1,26 @@
 import { Injectable, OnInit } from '@angular/core';
+import { Department } from '../models/department.model';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService implements OnInit {
+  departmentsList: Department[] = [
+    {
+      id: 1,
+      name: 'Information Tecnology',
+      numberOfEmployees: 15,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 2,
+      name: 'Human Resources',
+      numberOfEmployees: 5,
+      responsable: 'Jonh Doe'
+    }
+  ]
+
   usersList: User[] = [
     {
       id: 1,
@@ -59,8 +75,8 @@ export class MainService implements OnInit {
 
   ngOnInit() { }
 
-  //Users list
-  getUsers() {
+   //Users list services
+   getUsers() {
     return this.usersList;
   }
 
@@ -109,5 +125,49 @@ export class MainService implements OnInit {
       avatarUrl: avatarUrl
     }
     this.usersList.push(createdUser);
+  }
+
+  
+  //Departments list services
+  getDepartments() {
+    return this.departmentsList;
+  }
+
+  getDepartmentById(id) {
+    let selectedDepartment = this.departmentsList.find(obj => {
+      return obj.id == id;
+    })
+    return selectedDepartment;
+  }
+
+  deleteDepartmentById(id) {
+    for (var i = this.departmentsList.length - 1; i >= 0; --i) {
+      if (this.departmentsList[i].id == id) {
+        this.departmentsList.splice(i, 1);
+      }
+    }
+  }
+
+  updateDepartmentById(id, name: string, numberOfEmployees: number, responsable: string) {
+    let selectedDepartment = this.departmentsList.find(obj => {
+      return obj.id == id;
+    })
+    selectedDepartment.name = name;
+    selectedDepartment.numberOfEmployees = numberOfEmployees;
+    selectedDepartment.responsable = responsable;
+  }
+
+  
+  addDepartment(id, name: string, numberOfEmployees: number, responsable: string) {
+    let numberOfDepartments = this.departmentsList.length;
+    let newId = numberOfDepartments + 1;
+
+    let createdDepartment = {
+      id: newId,
+      name: name,
+      numberOfEmployees: numberOfEmployees,
+      responsable: responsable
+    }
+    this.departmentsList.push(createdDepartment);
   }
 }
