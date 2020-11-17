@@ -39,6 +39,11 @@ export class ConstantsService {
   //Translations en/ar
   displayNames = {
     en: {
+      modalText: {
+        confirmDeleteTitle: 'Are you sure you want to delete?',
+        yes: 'Yes',
+        no: 'No'
+      },
       layout: {
         back: 'Back'
       },
@@ -70,7 +75,9 @@ export class ConstantsService {
         iconTitle: 'fas fa-user-plus'
       },
       departmentsList: {
-
+        pageTitle: 'Departments list',
+        infoTitle: 'List of al company departments',
+        iconTitle: 'fas fa-building'
       },
       createDepartment: {
 
@@ -84,6 +91,11 @@ export class ConstantsService {
       }
     },
     ar: {
+      modalText: {
+        confirmDeleteTitle: 'هل أنت متأكد أنك تريد حذف؟',
+        yes: 'نعم',
+        no: 'لا'
+      },
       layout: {
         back: 'عودة'
       },
@@ -115,7 +127,9 @@ export class ConstantsService {
         iconTitle: 'fas fa-user-plus'
       },
       departmentsList: {
-
+        pageTitle: 'قائمة الأقسام',
+        infoTitle: 'قائمة أقسام الشركة',
+        iconTitle: 'fas fa-building'
       },
       createDepartment: {
 

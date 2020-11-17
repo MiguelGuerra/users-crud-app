@@ -5,7 +5,7 @@
       <div class="nav-tab">
         <a class="effect-underline" routerLink="usersList" routerLinkActive="active-link">{{displayNames.users}}</a>
       </div>
-      <div class="nav-tab">
+      <div class="nav-tab" *ngIf="userType == 'Admin'">
         <a class="effect-underline" routerLink="departments"
           routerLinkActive="active-link">{{displayNames.departments}}</a>
       </div>

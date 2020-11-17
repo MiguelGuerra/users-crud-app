@@ -6,6 +6,7 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -20,11 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'user/:id',
-    component: EditUserComponent
+    component: EditUserComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'addUser',
-    component: AddUserComponent
+    component: AddUserComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'about',
@@ -32,7 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'departments',
-    component: DepartmentsComponent
+    component: DepartmentsComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: '**',

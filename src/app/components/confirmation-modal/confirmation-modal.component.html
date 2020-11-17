@@ -1,1 +1,15 @@
-<p>confirmation-modal works!</p>
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box {{language}}">
+    <h1 mat-dialog-title>{{modalTitle}}</h1>
+    <div mat-dialog-content>{{modalInfo}}</div>
+    <div mat-dialog-actions class="modal-buttons">
+        <button 
+            mat-button 
+            mat-dialog-close
+            (click)="onConfirm()">{{modalYes}}</button>
+      <button 
+        mat-button 
+        mat-dialog-close
+        (click)="onClose()">{{modalNo}}</button>
+    </div>
+</div>

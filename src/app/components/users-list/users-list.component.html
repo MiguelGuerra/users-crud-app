@@ -2,7 +2,16 @@
     [pageTitle]="pageTitle"
     [infoTitle]="infoTitle"
     [iconTitle]="iconTitle"
-    [language]="language"></app-page-title>
+    [language]="language">
+</app-page-title>
+<app-confirmation-modal
+    *ngIf="showModal"
+    [modalTitle]="displayNamesConfirmationModal.confirmDeleteTitle"
+    [modalYes]="displayNamesConfirmationModal.yes"
+    [modalNo]="displayNamesConfirmationModal.no"
+    (confirm)="handleDeleteConfirm()"
+    (close)="handleModalClose()">
+</app-confirmation-modal>
 <div class="container container-users-list {{language}}">
     <div class="add-new-user" *ngIf="userType == 'Admin'">
         <div class="button-container">
@@ -36,7 +45,10 @@
                     <button (click)="editUser(user.id)">
                         <i class="fas fa-edit edit-btn"></i>
                     </button>
-                    <button (click)="deleteUser(user.id)">
+                    <!-- <button (click)="deleteUser(user.id)">
+                        <i class="fas fa-trash-alt edit-btn red"></i>
+                    </button> -->
+                    <button (click)="openModal(user.id)">
                         <i class="fas fa-trash-alt edit-btn red"></i>
                     </button>
                 </div>

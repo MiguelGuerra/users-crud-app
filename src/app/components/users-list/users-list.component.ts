@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
 import { MainService } from 'src/app/services/main.service';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-users-list',
@@ -20,14 +22,19 @@ export class UsersListComponent implements OnInit {
   language = '';
   pageName = 'usersList';
   displayNames: any = {};
+  displayNamesConfirmationModal: any = {};
 
+  showModal: boolean = false;
+  
   users: User[] = [];
+  selectedUserId: number;
 
   constructor(
     private router: Router,
     private headerService: HeaderService,
     private constantsService: ConstantsService,
-    private mainService: MainService) { }
+    private mainService: MainService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.updateLanguage(this.headerService.getLanguage());
@@ -44,7 +51,10 @@ export class UsersListComponent implements OnInit {
   updateLanguage(language) {
     this.language = language;
     this.displayNames = this.constantsService.displayNames[this.language][this.pageName];
-    
+
+    //for the confirmation modal component
+    this.displayNamesConfirmationModal = this.constantsService.displayNames[this.language]['modalText'];
+
     //for the child title component
     this.pageTitle = this.displayNames.pageTitle;
     this.infoTitle = this.displayNames.infoTitle;
@@ -61,5 +71,19 @@ export class UsersListComponent implements OnInit {
 
   goToAddUser() {
     this.router.navigateByUrl('addUser');
+  }
+
+  openModal(id) {
+    this.showModal = true;
+    this.selectedUserId = id;
+  }
+
+  handleDeleteConfirm() {
+    this.deleteUser(this.selectedUserId);
+    this.showModal = false;
+  }
+
+  handleModalClose() {
+    this.showModal = false;
   }
 }

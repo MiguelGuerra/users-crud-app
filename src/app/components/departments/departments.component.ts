@@ -9,22 +9,22 @@ import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
 import { MainService } from 'src/app/services/main.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
+// export interface UserData {
+//   id: string;
+//   name: string;
+//   progress: string;
+//   color: string;
+// }
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+// /** Constants used to fill up our data base. */
+// const COLORS: string[] = [
+//   'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
+//   'aqua', 'blue', 'navy', 'black', 'gray'
+// ];
+// const NAMES: string[] = [
+//   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
+//   'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
+// ];
 
 @Component({
   selector: 'app-departments',
@@ -44,8 +44,8 @@ export class DepartmentsComponent implements OnInit , AfterViewInit  {
 
   departmentsList: Department[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['id', 'name', 'numberOfEmployees', 'responsable'];
+  dataSource: MatTableDataSource<Department>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -54,11 +54,11 @@ export class DepartmentsComponent implements OnInit , AfterViewInit  {
     private constantService: ConstantsService,
     private headerService: HeaderService,
     private mainService: MainService) { 
-      const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+      // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
       // Assign the data to the data source for the table to render
-      this.dataSource = new MatTableDataSource(users);
     }
+    
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -83,6 +83,7 @@ export class DepartmentsComponent implements OnInit , AfterViewInit  {
 
     //know the user type from login
     this.userType = this.headerService.getUserType()
+    this.dataSource = new MatTableDataSource(this.departmentsList);
   }
 
   
@@ -98,15 +99,15 @@ export class DepartmentsComponent implements OnInit , AfterViewInit  {
 
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+// /** Builds and returns a new User. */
+// function createNewUser(id: number): UserData {
+//   const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
+//       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}
+//   return {
+//     id: id.toString(),
+//     name: name,
+//     progress: Math.round(Math.random() * 100).toString(),
+//     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
+//   };
+// }
