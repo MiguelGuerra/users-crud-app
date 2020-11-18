@@ -21,7 +21,7 @@ export class EditUserComponent implements OnInit {
   pageName = 'editUser';
   displayNames: any = {};
 
-  //selected user info to diplay on form
+  //selected user info to display on form
   userSelected: User;
   userId;
 
@@ -33,6 +33,9 @@ export class EditUserComponent implements OnInit {
     role: '',
     avatarUrl: ''
   };
+
+  //initial info of user to check if info was changed on submit
+  userInitialInfoReceived: User;
 
   //this could be a service
   avatarsList: Array<string> = [
@@ -69,6 +72,7 @@ export class EditUserComponent implements OnInit {
       this.updateLanguage(language);
     });
 
+    this.userInitialInfoReceived = JSON.parse(JSON.stringify(this.userNewInfo));
   }
 
   updateLanguage(language) {
@@ -83,10 +87,16 @@ export class EditUserComponent implements OnInit {
   
   //for template-driven form
   onSubmit(form: NgForm) { 
-    if(form.invalid) {
-      alert("Invalid Input");
+    let wasInfoChanged = JSON.stringify(this.userNewInfo)  === JSON.stringify(this.userInitialInfoReceived) ? false : true;
+
+    if(wasInfoChanged){
+      if(form.invalid) {
+        alert("Invalid Input");
+      } else {
+        this.updateUserInfo();
+      }
     } else {
-      this.updateUserInfo();
+      alert("Info wasn´t changed!")
     }
   }
 
