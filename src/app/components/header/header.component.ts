@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   pageName = 'header';
   displayNames:any = {};
   userType = '';
+  tabName='';
 
   constructor(
     private constantService: ConstantsService,
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateLanguage(this.headerService.getLanguage());
+    this. tabName = this.headerService.getTabName();
   }
 
   updateLanguage(language) {
@@ -32,4 +34,8 @@ export class HeaderComponent implements OnInit {
     this.headerService.language$.next(language);
   }
 
+  updateTabName(tabName){
+    this.headerService.setTabName(tabName);
+    this.tabName = this.headerService.getTabName();
+  }
 }

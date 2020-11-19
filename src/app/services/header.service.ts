@@ -9,6 +9,7 @@ export class HeaderService {
   userType = 'Admin';
   language = 'en';
   language$: BehaviorSubject<string> = new BehaviorSubject('en');
+  tabName: string = 'users';
 
   constructor() { }
 
@@ -25,5 +26,15 @@ export class HeaderService {
   // Method for getting language
   getLanguage() {
     return this.language;
+  }
+
+  // Method for getting tabname
+  getTabName() {
+    return this.tabName;
+  }
+
+  // Method for seting tabname
+  setTabName(tabName) {
+    this.tabName = tabName;
   }
 }
