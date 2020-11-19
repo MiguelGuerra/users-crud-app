@@ -12,6 +12,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
 import { HeaderComponent } from './components/header/header.component';
@@ -28,6 +30,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { LineComponent } from './components/echarts/line/line.component';
+import { PieComponent } from './components/echarts/pie/pie.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpClientModule }  from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -44,13 +50,17 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     ConfirmationModalComponent,
     AddUserComponent,
     PageTitleComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    LineComponent,
+    PieComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -59,7 +69,10 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

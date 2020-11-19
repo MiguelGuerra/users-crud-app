@@ -50,7 +50,8 @@ export class ConstantsService {
       header: {
         users: 'Users',
         departments: 'Departments',
-        about: 'About'
+        about: 'About',
+        dashboard: 'Dashboard'
       },
       userInfo: {
         logout: 'Logout'
@@ -102,7 +103,8 @@ export class ConstantsService {
       header: {
         users: 'المستخدمون',
         departments: 'الإدارات',
-        about: 'حول'
+        about: 'حول',
+        dashboard: 'لوحة القيادة'
       },
       userInfo: {
         logout: 'تسجيل خروج'

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
     path: 'departments',
     component: DepartmentsComponent,
     canActivate: [AdminGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
     path: '**',
