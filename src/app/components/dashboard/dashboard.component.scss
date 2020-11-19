@@ -1,0 +1,30 @@
+@import '../../../assets/scss/variables.scss';
+
+.container {
+    .top-section {
+        width: 100%;
+        .right-top-section{
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            margin: 1%;
+        }
+        .left-top-section{
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            margin: 1%;
+        }
+    }
+    .bottom-section {
+        .right-bottom-section{
+            width: 50%;
+            display: inline-block;
+        }
+        .left-bottom-section{
+            width: 50%;
+            display: inline-block;
+        }
+        
+    }
+}

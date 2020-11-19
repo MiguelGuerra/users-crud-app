@@ -22,7 +22,7 @@ export class LineComponent implements OnInit, OnDestroy {
     //   this._initBasicLineEchart(data);
     // });
     
-    this.subscription = this.echartService.getbasicLineEchartData().subscribe(data => {
+    this.subscription = this.echartService.getBasicLineEchartData().subscribe(data => {
       this._initBasicLineEchart(data);
     });
 
@@ -36,13 +36,10 @@ export class LineComponent implements OnInit, OnDestroy {
 
   private _initBasicLineEchart(chartData: LineEchartModel[]) {
 
-    this._theme = this.isDarkMode ? 'dark' : '';
-
     this._chartOption = {
       tooltip: {
         show: true
       },
-      // background: 'transparent',
       xAxis: {
         type: 'category',
         data: chartData.map(m => ({
