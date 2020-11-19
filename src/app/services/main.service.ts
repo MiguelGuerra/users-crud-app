@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Department } from '../models/department.model';
 import { User } from '../models/user.model';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,8 @@ export class MainService implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private loadingService: LoadingService,) { }
 
   ngOnInit() { }
 

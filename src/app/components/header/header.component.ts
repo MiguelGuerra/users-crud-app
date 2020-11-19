@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   tabName='';
 
   constructor(
+    private loadingService: LoadingService,
     private constantService: ConstantsService,
     private headerService: HeaderService) { }
 
@@ -35,7 +37,9 @@ export class HeaderComponent implements OnInit {
   }
 
   updateTabName(tabName){
+    // this.loadingService.showLoading();
     this.headerService.setTabName(tabName);
     this.tabName = this.headerService.getTabName();
+    // this.loadingService.hideLoading();
   }
 }

@@ -1,0 +1,41 @@
+.show-loader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10000;
+    display: none;
+  }
+  
+  .show-loader img, .show-loader div {
+    height: 40px;
+    position: absolute;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 50px));
+  }
+  
+  .show-loader img {
+    animation: rotateLoader 1s linear infinite;
+  }
+  
+  .show-loader div {
+    transform: translate(-50%, calc(-50% + 50px));
+  }
+  
+  .show-loader.show-loading {
+    display: block;
+  }
+  
+  /* @keyframes rotateLoader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } */
+  
