@@ -85,6 +85,11 @@ export class ConstantsService {
         infoTitle: 'List of al company departments',
         iconTitle: 'fas fa-building'
       },
+      editDepartment: {
+        pageTitle: 'Edit Department',
+        infoTitle: 'Edit the department info',
+        iconTitle: 'fas fa-edit'
+      },
       createDepartment: {
 
       },
@@ -142,6 +147,11 @@ export class ConstantsService {
         pageTitle: 'قائمة الأقسام',
         infoTitle: 'قائمة أقسام الشركة',
         iconTitle: 'fas fa-building'
+      },
+      editDepartment: {
+        pageTitle: 'تحرير القسم',
+        infoTitle: 'تحرير معلومات القسم',
+        iconTitle: 'fas fa-edit'
       },
       createDepartment: {
 

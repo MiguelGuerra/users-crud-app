@@ -36,7 +36,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef class="actions-header"> Actions </th>
                 <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" class="edit-btn">Edit</button>
+                    <button mat-raised-button color="primary" class="edit-btn" (click)="goToEditDepartment(row.id)">Edit</button>
                     <button mat-raised-button color="warn" class="delete-btn" (click)="openModal(row.id)">Delete</button>
                 </td>
             </ng-container>

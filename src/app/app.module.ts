@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -34,6 +35,7 @@ import { LineComponent } from './components/echarts/line/line.component';
 import { PieComponent } from './components/echarts/pie/pie.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule }  from '@angular/common/http';
+import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { HttpClientModule }  from '@angular/common/http';
     BackButtonComponent,
     LineComponent,
     PieComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditDepartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -69,10 +72,11 @@ import { HttpClientModule }  from '@angular/common/http';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule,
+    MatDialogModule, 
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

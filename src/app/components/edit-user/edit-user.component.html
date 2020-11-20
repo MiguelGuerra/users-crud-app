@@ -21,9 +21,7 @@
                             required
                             [(ngModel)]="userNewInfo.name"
                             name="name"
-                            #name="ngModel"
-                            (change)="onChange('name')">
-                        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                            #name="ngModel">
                     </mat-form-field>
                 </div>
                 <div class="example-container">
@@ -36,8 +34,7 @@
                             email
                             #email="ngModel"
                             [(ngModel)]="userNewInfo.email"
-                            name="email"
-                            (change)="onChange('email')">
+                            name="email">
                     </mat-form-field>
                 </div>
                 <div class="example-container">
@@ -49,8 +46,7 @@
                             required
                             #job="ngModel"
                             [(ngModel)]="userNewInfo.job"
-                            name="job"
-                            (change)="onChange('job')">
+                            name="job">
                     </mat-form-field>
                 </div>
             </div>

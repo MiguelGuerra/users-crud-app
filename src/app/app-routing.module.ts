@@ -4,6 +4,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'departments',
     component: DepartmentsComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'editDepartment/:id',
+    component: EditDepartmentComponent,
     canActivate: [AdminGuard]
   },
   {

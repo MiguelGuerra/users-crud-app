@@ -128,12 +128,7 @@ export class EditUserComponent implements OnInit {
     this.userNewInfo.avatarUrl = '';
   }
 
-  onChange(inputName) {
-    console.log(inputName);
-  }
-
   selectAvatar(selectedAvatar) {
     this.userNewInfo.avatarUrl = selectedAvatar;
-    console.log(selectedAvatar);
   }
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/models/department.model';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
@@ -38,6 +39,7 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
+    private router: Router,
     private constantService: ConstantsService,
     private headerService: HeaderService,
     private mainService: MainService) {
@@ -62,15 +64,6 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
     this.dataSource = new MatTableDataSource(this.departmentsList);
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   updateLanguage(language) {
     this.language = language;
     this.displayNames = this.constantService.displayNames[this.language][this.pageName];
@@ -79,6 +72,15 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
     this.pageTitle = this.displayNames.pageTitle;
     this.infoTitle = this.displayNames.infoTitle;
     this.iconTitle = this.displayNames.iconTitle;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   openModal(id) {
@@ -103,4 +105,7 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
     this.showModal = false;
   }
 
+  goToEditDepartment(id) {
+    this.router.navigateByUrl(`editDepartment/${id}`);
+  }
 }
