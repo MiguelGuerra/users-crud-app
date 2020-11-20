@@ -53,6 +53,11 @@ export class ConstantsService {
         about: 'About',
         dashboard: 'Dashboard'
       },
+      dashboard: {
+        pageTitle: 'Dashboard',
+        infoTitle: 'Application charts',
+        iconTitle: 'fas fa-chart-pie'
+      },
       userInfo: {
         logout: 'Logout'
       },
@@ -105,6 +110,11 @@ export class ConstantsService {
         departments: 'الإدارات',
         about: 'حول',
         dashboard: 'لوحة القيادة'
+      },
+      dashboard: {
+        pageTitle: 'لوحة القيادة',
+        infoTitle: 'مخططات التطبيق',
+        iconTitle: 'fas fa-chart-pie'
       },
       userInfo: {
         logout: 'تسجيل خروج'

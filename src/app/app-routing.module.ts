@@ -13,7 +13,7 @@ import { AdminGuard } from './guards/admin.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/usersList',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   {

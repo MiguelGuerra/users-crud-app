@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -16,13 +17,14 @@ export class HeaderComponent implements OnInit {
   tabName='';
 
   constructor(
+    private route: ActivatedRoute,
     private loadingService: LoadingService,
     private constantService: ConstantsService,
     private headerService: HeaderService) { }
 
   ngOnInit(): void {
     this.updateLanguage(this.headerService.getLanguage());
-    this. tabName = this.headerService.getTabName();
+    this.tabName = this.headerService.getTabName();
   }
 
   updateLanguage(language) {

@@ -9,7 +9,7 @@ export class HeaderService {
   userType = 'Admin';
   language = 'en';
   language$: BehaviorSubject<string> = new BehaviorSubject('en');
-  tabName: string = 'users';
+  tabName: string = 'dashboard';
 
   constructor() { }
 

@@ -1,10 +1,19 @@
-<div class="container">
+<app-page-title
+    [pageTitle]="pageTitle"
+    [infoTitle]="infoTitle"
+    [iconTitle]="iconTitle"
+    [language]="language">
+</app-page-title>
+<div class="container {{language}}">
     <div class="top-section">
         <div class="left-top-section">
             <app-line></app-line>
         </div>
-        <div class="right-top-section">
+        <div class="center-top-section">
             <app-pie></app-pie>
+        </div>
+        <div class="right-top-section">
+            <app-line></app-line>
         </div>
     </div>
     <div class="bottom-section">
