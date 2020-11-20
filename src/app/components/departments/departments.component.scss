@@ -3,17 +3,42 @@
     table {
         width: 100%;
       }
-      
       .mat-form-field {
         font-size: 18px;
         width: 20%;
       }
-      
-      td, th {
+      .id-header {
+        width: 5%;
+      }
+      .name-header {
+        width: 35%;
+      }
+      .employees-header {
+        width: 20%;
+      }
+      .responsable-header {
         width: 25%;
+      }
+      .action-header {
+        width: 20%;
+      }
+      button {
+        line-height: 2.3;
+        font-size: 14px;
+      }
+      .edit-btn {
+        margin-right: 10px;
       }
 }
 
 .container.ar {
     direction: rtl;
+    table {
+      th {
+        text-align: right;
+      }
+    }
+    .edit-btn {
+      margin-left: 10px;
+    }
 }

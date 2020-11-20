@@ -11,11 +11,71 @@ export class MainService implements OnInit {
     {
       id: 1,
       name: 'Information Tecnology',
-      numberOfEmployees: 15,
+      numberOfEmployees: 1500,
       responsable: 'Jonh Doe'
     },
     {
       id: 2,
+      name: 'Human Resources',
+      numberOfEmployees: 65,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 3,
+      name: 'Information Tecnology',
+      numberOfEmployees: 175,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 4,
+      name: 'Human Resources',
+      numberOfEmployees: 53,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 5,
+      name: 'Information Tecnology',
+      numberOfEmployees: 5,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 6,
+      name: 'Human Resources',
+      numberOfEmployees: 54,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 7,
+      name: 'Information Tecnology',
+      numberOfEmployees: 1445,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 8,
+      name: 'Human Resources',
+      numberOfEmployees: 5876,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 9,
+      name: 'Information Tecnology',
+      numberOfEmployees: 15,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 10,
+      name: 'Human Resources',
+      numberOfEmployees: 5,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 11,
+      name: 'Information Tecnology',
+      numberOfEmployees: 15,
+      responsable: 'Jonh Doe'
+    },
+    {
+      id: 12,
       name: 'Human Resources',
       numberOfEmployees: 5,
       responsable: 'Jonh Doe'
