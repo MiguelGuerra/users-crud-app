@@ -1,15 +1,8 @@
 @import '../../../assets/scss/variables.scss';
 
+
 .container {
     padding-top: 20px;
-    .right-side {
-        width: 50%;
-        display: inline-block;
-    }
-    .left-side {
-        width: 50%;
-        display: inline-block;
-    }
     button {
         background-color: $color3;
         color: white;
@@ -52,7 +45,18 @@
     }
     .info-section {
         display: inline-block;
-        width: 50%;
+        width: 100%;
+        .right-side {
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .left-side {
+            width: 49%;
+            margin-right: 2%;
+            display: inline-block;
+            vertical-align: top;
+        }
         mat-form-field {
             width: 100%;
         }

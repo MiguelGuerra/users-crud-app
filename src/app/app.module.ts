@@ -12,6 +12,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -76,7 +78,9 @@ import { EditDepartmentComponent } from './components/edit-department/edit-depar
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

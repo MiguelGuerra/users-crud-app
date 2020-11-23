@@ -26,15 +26,33 @@ export class EditDepartmentComponent implements OnInit {
   departmentSelected: Department;
   departmentId;
 
+  //initial info of department to check if info was changed on submit
+  departmentInitialInfoReceived: Department;
+
   //new info to update selected department
   departmentNewInfo = {
     name: '',
     numberOfEmployees: null,
-    responsable: ''
+    responsable: '',
+    priority: '',
+    tecnologiesOptions: [],
+    teams: {
+      topLevel: '',
+      lowLevel: ''
+    }
   };
-  
-  //initial info of department to check if info was changed on submit
-  departmentInitialInfoReceived: Department;
+
+  //for the drpdown options
+  priorityOptions: string[] = ['Low', 'Medium', 'High'];
+  //for the checkboxes
+  tecnologiesOptions: string[] = ['Word', 'Powerpoint', 'Excel', 'One Note'];
+
+  //for the checkboxes
+  checked = false;
+  indeterminate = false;
+
+  //for the radio button
+  commentController: 'yes' | 'no' = 'no';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -51,9 +69,12 @@ export class EditDepartmentComponent implements OnInit {
     this.departmentSelected = selectedDepartment;
 
     //replicate selected department info to new department
-    this.departmentNewInfo.name= this.departmentSelected.name;
-    this.departmentNewInfo.numberOfEmployees= this.departmentSelected.numberOfEmployees;
-    this.departmentNewInfo.responsable= this.departmentSelected.responsable;
+    this.departmentNewInfo.name = this.departmentSelected.name;
+    this.departmentNewInfo.numberOfEmployees = this.departmentSelected.numberOfEmployees;
+    this.departmentNewInfo.responsable = this.departmentSelected.responsable;
+    this.departmentNewInfo.priority = this.departmentSelected.priority;
+    this.departmentNewInfo.tecnologiesOptions = this.departmentSelected.tecnologiesOptions;
+
 
     this.updateLanguage(this.headerService.getLanguage());
     this.headerService.language$.subscribe(language => {
@@ -63,7 +84,7 @@ export class EditDepartmentComponent implements OnInit {
     //know the user type from login
     this.userType = this.headerService.getUserType()
 
-    
+    //check if info was changed from intial data
     this.departmentInitialInfoReceived = JSON.parse(JSON.stringify(this.departmentNewInfo));
   }
 
@@ -76,12 +97,13 @@ export class EditDepartmentComponent implements OnInit {
     this.infoTitle = this.displayNames.infoTitle;
     this.iconTitle = this.displayNames.iconTitle;
   }
-   //for template-driven form
-   onSubmit(form: NgForm) { 
-    let wasInfoChanged = JSON.stringify(this.departmentNewInfo)  === JSON.stringify(this.departmentInitialInfoReceived) ? false : true;
 
-    if(wasInfoChanged){
-      if(form.invalid) {
+  //for template-driven form
+  onSubmit(form: NgForm) {
+    let wasInfoChanged = JSON.stringify(this.departmentNewInfo) === JSON.stringify(this.departmentInitialInfoReceived) ? false : true;
+
+    if (wasInfoChanged) {
+      if (form.invalid) {
         alert("Invalid Inputs");
       } else {
         this.updateDepartmentInfo();
@@ -101,15 +123,33 @@ export class EditDepartmentComponent implements OnInit {
     this.router.navigateByUrl('/departments');
   }
 
-  resetForm(){
+  resetForm() {
     this.departmentNewInfo.name = this.departmentSelected.name;
     this.departmentNewInfo.numberOfEmployees = this.departmentSelected.numberOfEmployees;
     this.departmentNewInfo.responsable = this.departmentSelected.responsable;
+    this.departmentNewInfo.priority = this.departmentSelected.priority;
+    this.departmentNewInfo.tecnologiesOptions = this.departmentSelected.tecnologiesOptions;
   }
 
   clearForm() {
     this.departmentNewInfo.name = '';
     this.departmentNewInfo.numberOfEmployees = '';
     this.departmentNewInfo.responsable = '';
+    this.departmentNewInfo.priority = '';
+    this.departmentNewInfo.tecnologiesOptions = [];
+  }
+
+  selectTecnologyOption(option: string) {
+    //check if elemente already exists on array
+    if (this.departmentNewInfo.tecnologiesOptions.includes(option)) {
+      //remove the option to array
+      const index = this.departmentNewInfo.tecnologiesOptions.indexOf(option, 0);
+      if (index > -1) {
+        this.departmentNewInfo.tecnologiesOptions.splice(index, 1);
+      }
+    } else {
+      //add the option to array
+      this.departmentNewInfo.tecnologiesOptions.push(option);
+    }
   }
 }

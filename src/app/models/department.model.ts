@@ -3,4 +3,7 @@ export class Department {
     name: string;
     numberOfEmployees: number;
     responsable: string;
+    priority: string;
+    tecnologiesOptions: string[];
+    teams: {topLevel: string, lowLevel: string};
 }

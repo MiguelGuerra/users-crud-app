@@ -4,14 +4,14 @@
     <app-back-button></app-back-button>
 </div>
 <mat-card class="user-card">
-    <mat-card-header>
+    <mat-card-header style="margin: 0 !important;">
         <mat-card-title>{{departmentSelected.name}}</mat-card-title>
         <mat-card-subtitle>{{departmentSelected.numberOfEmployees}} active employees</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <form (ngSubmit)="onSubmit(editDepartmentForm)" #editDepartmentForm="ngForm">
             <div class="info-section">
-                <div class="right-side">
+                <div class="left-side">
                     <div class="example-container">
                         <mat-form-field appearance="fill">
                             <mat-label>Name</mat-label>
@@ -34,8 +34,44 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="left-side">
-
+                <div class="right-side">
+                    <div class="example-container">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Priority</mat-label>
+                            <mat-select [(ngModel)]="departmentNewInfo.priority" name="departmentNewInfo.priority">
+                                <mat-option *ngFor="let priority of priorityOptions" [value]="priority" name="priority">
+                                    {{priority}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="example-container">
+                        <section class="example-section">
+                            <mat-label>Tecnology stack</mat-label>
+                            <br>
+                            <mat-checkbox *ngFor="let tecnologyOption of tecnologiesOptions" name="tecnologyOption"
+                                (changed)="selectTecnologyOption(tecnologyOption)"
+                                [checked]="departmentNewInfo.tecnologiesOptions.includes(tecnologyOption) ? true : false">
+                                {{tecnologyOption}}
+                            </mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="example-container">
+                        <section class="example-section">
+                            <mat-label>Want to add a comment?</mat-label>
+                            <br>
+                            <mat-radio-group [(ngModel)]="commentController" name="commentController">
+                                <mat-radio-button class="example-margin" value="yes">Yes</mat-radio-button>
+                                <mat-radio-button class="example-margin" value="no">No</mat-radio-button>
+                            </mat-radio-group>
+                        </section>
+                    </div>
+                </div>
+                <div *ngIf="commentController == 'yes'">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput placeholder=""></textarea>
+                    </mat-form-field>
                 </div>
             </div>
             <mat-card-actions>

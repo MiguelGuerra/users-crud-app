@@ -12,73 +12,145 @@ export class MainService implements OnInit {
       id: 1,
       name: 'Information Tecnology',
       numberOfEmployees: 1500,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 2,
       name: 'Human Resources',
       numberOfEmployees: 65,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Excel', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 3,
       name: 'Information Tecnology',
       numberOfEmployees: 175,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'High',
+      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word', 'Excel'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 4,
       name: 'Human Resources',
       numberOfEmployees: 53,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'High',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 5,
       name: 'Information Tecnology',
       numberOfEmployees: 5,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'High',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 6,
       name: 'Human Resources',
       numberOfEmployees: 54,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Medium',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 7,
       name: 'Information Tecnology',
       numberOfEmployees: 1445,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 8,
       name: 'Human Resources',
       numberOfEmployees: 5876,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'High',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 9,
       name: 'Information Tecnology',
       numberOfEmployees: 15,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Medium',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 10,
       name: 'Human Resources',
       numberOfEmployees: 5,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 11,
       name: 'Information Tecnology',
       numberOfEmployees: 15,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Powerpoint', 'One Note'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     },
     {
       id: 12,
       name: 'Human Resources',
       numberOfEmployees: 5,
-      responsable: 'Jonh Doe'
+      responsable: 'Jonh Doe',
+      priority: 'Low',
+      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     }
   ]
 
@@ -228,7 +300,13 @@ export class MainService implements OnInit {
       id: newId,
       name: name,
       numberOfEmployees: numberOfEmployees,
-      responsable: responsable
+      responsable: responsable,
+      priority: 'Low',
+      tecnologiesOptions: ['HR', 'IT', 'Arts'],
+      teams: {
+        topLevel: 'Team 1',
+        lowLevel: ' Team 2'
+      }
     }
     this.departmentsList.push(createdDepartment);
   }
