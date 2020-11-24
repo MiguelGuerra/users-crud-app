@@ -2,26 +2,24 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/services/echarts.service';
-import { LineEchartModel } from 'src/app/models/line-echart.model';
 
 @Component({
-  selector: 'app-line',
-  templateUrl: './line.component.html',
-  styleUrls: ['./line.component.scss']
+  selector: 'app-bars',
+  templateUrl: './bars.component.html',
+  styleUrls: ['./bars.component.scss']
 })
-export class LineComponent implements OnInit, OnDestroy {
-
+export class BarsComponent implements OnInit {
   _chartOption: EChartOption;
   subscription: Subscription;
   isDarkMode: boolean = false;
   _theme: string;
+
   constructor(private echartService: EchartsService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.subscription = this.echartService.getBasicLineEchartData().subscribe(data => {
-      this._initBasicLineEchart(data);
+      this._initBasicBarsEchart(data);
     });
-
   }
 
   ngOnDestroy() {
@@ -30,28 +28,20 @@ export class LineComponent implements OnInit, OnDestroy {
     }
   }
 
-  private _initBasicLineEchart(chartData: LineEchartModel[]) {
+  private _initBasicBarsEchart(chartData) {
 
     this._chartOption = {
-      tooltip: {
-        show: true
-      },
       xAxis: {
         type: 'category',
-        data: chartData.map(m => ({
-          value: m.name
-        }))
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       },
       yAxis: {
         type: 'value'
       },
       series: [{
-        data: chartData.map(m => ({
-          value: m.value
-        })),
-        type: 'line'
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar'
       }]
-    };
+    }
   }
-
 }

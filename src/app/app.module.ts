@@ -38,6 +38,7 @@ import { PieComponent } from './components/echarts/pie/pie.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
+import { BarsComponent } from './components/echarts/bars/bars.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { EditDepartmentComponent } from './components/edit-department/edit-depar
     LineComponent,
     PieComponent,
     DashboardComponent,
-    EditDepartmentComponent
+    EditDepartmentComponent,
+    BarsComponent
   ],
   imports: [
     BrowserModule,
