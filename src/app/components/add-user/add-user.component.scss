@@ -5,12 +5,8 @@
 }
 
 .container.ar {
+    padding-top: 20px;
     direction: rtl;
-    button {
-        i {
-            margin-left: 5px;
-        }
-    }
 }
 
 .user-card {
@@ -27,14 +23,18 @@
     }
     .info-section {
         display: inline-block;
-        width: 50%;
+        width: 49%;
+        vertical-align: top;
+        margin-right: 2%;
         mat-form-field {
             width: 100%;
         }
     }
     .avatar-container {
         display: inline-block;
-        width: 50%;
+        width: 49%;
+        vertical-align: top;
+        text-align: center;
         .avatar-section {
             display: flex;
             flex-wrap: wrap;
@@ -55,5 +55,20 @@
                 }
             }
         }
+    }
+}
+
+.user-card.ar {
+    direction: rtl;
+    button {
+        i {
+            margin-left: 5px;
+        }
+    }
+    .info-section {
+        margin-right: 0;
+    }
+    .avatar-section {
+        margin-right: 2%;
     }
 }
