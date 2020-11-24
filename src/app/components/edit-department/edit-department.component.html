@@ -3,7 +3,7 @@
 <div class="container {{language}}">
     <app-back-button></app-back-button>
 </div>
-<mat-card class="user-card">
+<mat-card class="user-card {{language}}">
     <mat-card-header style="margin: 0 !important;">
         <mat-card-title>{{departmentSelected.name}}</mat-card-title>
         <mat-card-subtitle>{{departmentSelected.numberOfEmployees}} active employees</mat-card-subtitle>
@@ -12,21 +12,21 @@
         <form (ngSubmit)="onSubmit(editDepartmentForm)" #editDepartmentForm="ngForm">
             <div class="info-section">
                 <div class="left-side">
-                    <div class="example-container">
+                    <div class="input-container">
                         <mat-form-field appearance="fill">
                             <mat-label>Name</mat-label>
                             <input matInput placeholder="" required [(ngModel)]="departmentNewInfo.name" name="name"
                                 #name="ngModel">
                         </mat-form-field>
                     </div>
-                    <div class="example-container">
+                    <div class="input-container">
                         <mat-form-field appearance="fill">
                             <mat-label>Number of employees</mat-label>
                             <input matInput placeholder="" required #numberOfEmployees="ngModel"
                                 [(ngModel)]="departmentNewInfo.numberOfEmployees" name="numberOfEmployees">
                         </mat-form-field>
                     </div>
-                    <div class="example-container">
+                    <div class="input-container">
                         <mat-form-field appearance="fill">
                             <mat-label>Responsable</mat-label>
                             <input matInput placeholder="" required #responsable="ngModel"
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="right-side">
-                    <div class="example-container">
+                    <div class="input-container">
                         <mat-form-field appearance="fill">
                             <mat-label>Priority</mat-label>
                             <mat-select [(ngModel)]="departmentNewInfo.priority" name="departmentNewInfo.priority">
@@ -45,8 +45,8 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="example-container">
-                        <section class="example-section">
+                    <div class="input-container">
+                        <section class="example-section checkboxes-wrapper">
                             <mat-label>Tecnology stack</mat-label>
                             <br>
                             <mat-checkbox *ngFor="let tecnologyOption of tecnologiesOptions" name="tecnologyOption"
@@ -56,7 +56,7 @@
                             </mat-checkbox>
                         </section>
                     </div>
-                    <div class="example-container">
+                    <div class="input-container">
                         <section class="example-section">
                             <mat-label>Want to add a comment?</mat-label>
                             <br>

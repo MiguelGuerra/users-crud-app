@@ -84,6 +84,9 @@
     }
     .info-section {
         margin-right: 0;
+        * {
+            text-align: right;
+        }
     }
     .avatar-section {
         margin-right: 2%;

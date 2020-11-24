@@ -36,6 +36,12 @@
     margin: 0 auto;
     display: block;
     padding: 50px;
+    .checkboxes-wrapper {
+        padding-bottom: 1.7em;
+        .mat-checkbox{
+            margin-right: 40px;
+        }
+    }
     .example-header-image {
         background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
         background-size: cover;
@@ -61,28 +67,38 @@
             width: 100%;
         }
     }
-    .avatar-container {
-        display: inline-block;
-        width: 50%;
-        .avatar-section {
-            display: flex;
-            flex-wrap: wrap;
-            .avatar-wapper {
-                width: 18%;
-                padding: 1%;
-                text-align: center;
-                &:hover {
-                    background-color: lighten($color3, 60%);
-                    transition: all .3s;
-                    cursor: pointer;
-                }
-                &.active-avatar {
-                    background-color: lighten($color3, 40%);
-                }
-                img {
-                    width: 100px;
-                }
+}
+
+
+.mat-checkbox-inner-container {
+    margin-left: 5px !important;
+    margin-right: 0;
+}
+
+.user-card.ar {
+    direction: rtl;
+    .checkboxes-wrapper {
+        .mat-checkbox{
+            margin-right: 0;
+            margin-left: 40px;
+        }
+    }
+    .example-container .mat-form-field + .mat-form-field {
+        margin-right: 8px;
+    }
+    .info-section {
+        .right-side {
+            margin-right: 2%;
+            .input-container .checkboxes-wrapper .mat-checkbox .mat-checkbox-layout .mat-checkbox-inner-container {
+                margin: 0;
+                margin-left: 10px;
             }
+        }
+        .left-side {
+            margin-right: 0;
+        }
+        * {
+            text-align: right;
         }
     }
 }
