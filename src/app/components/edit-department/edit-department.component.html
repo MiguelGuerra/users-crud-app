@@ -49,10 +49,11 @@
                         <section class="example-section checkboxes-wrapper">
                             <mat-label>Tecnology stack</mat-label>
                             <br>
-                            <mat-checkbox *ngFor="let tecnologyOption of tecnologiesOptions" name="tecnologyOption"
-                                (changed)="selectTecnologyOption(tecnologyOption)"
-                                [checked]="departmentNewInfo.tecnologiesOptions.includes(tecnologyOption) ? true : false">
-                                {{tecnologyOption}}
+                            <mat-checkbox *ngFor="let tecnologyOption of departmentNewInfo.tecnologiesOptions"
+                              [name]="tecnologyOption.key"
+                              [(ngModel)]="tecnologyOption.checked"
+                            >
+                              {{tecnologyOption.key}}
                             </mat-checkbox>
                         </section>
                     </div>

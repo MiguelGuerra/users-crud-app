@@ -45,7 +45,25 @@ export class EditDepartmentComponent implements OnInit {
   //for the drpdown options
   priorityOptions: string[] = ['Low', 'Medium', 'High'];
   //for the checkboxes
-  tecnologiesOptions: string[] = ['Word', 'Powerpoint', 'Excel', 'One Note'];
+  tecnologiesOptions = [
+    {
+      key: 'Word',
+      checked: false
+    },
+    {
+      key: 'Powerpoint',
+      checked: false
+    },
+    {
+      key: 'Excel',
+      checked: false
+    },
+    {
+      key: 'One Note',
+      checked: false
+    },
+  ];
+  technologiesOptionsReceived;
 
   //for the checkboxes
   checked = false;
@@ -73,8 +91,15 @@ export class EditDepartmentComponent implements OnInit {
     this.departmentNewInfo.numberOfEmployees = this.departmentSelected.numberOfEmployees;
     this.departmentNewInfo.responsable = this.departmentSelected.responsable;
     this.departmentNewInfo.priority = this.departmentSelected.priority;
-    this.departmentNewInfo.tecnologiesOptions = this.departmentSelected.tecnologiesOptions;
 
+    // Copying to received to a new variable
+    this.technologiesOptionsReceived = this.departmentSelected.tecnologiesOptions;
+    // Assign required option to checked
+    this.technologiesOptionsReceived.map(data => {
+      this.tecnologiesOptions.filter(d => d.key === data)[0].checked = true;
+    });
+    // Assigned to UI binding
+    this.departmentNewInfo.tecnologiesOptions = this.tecnologiesOptions;
 
     this.updateLanguage(this.headerService.getLanguage());
     this.headerService.language$.subscribe(language => {
@@ -129,6 +154,16 @@ export class EditDepartmentComponent implements OnInit {
     this.departmentNewInfo.responsable = this.departmentSelected.responsable;
     this.departmentNewInfo.priority = this.departmentSelected.priority;
     this.departmentNewInfo.tecnologiesOptions = this.departmentSelected.tecnologiesOptions;
+
+    // Reseting all options to unchecked
+    this.tecnologiesOptions.map(data => data.checked = false);
+    // Setting required options to checked
+    this.technologiesOptionsReceived.map(data => {
+      this.tecnologiesOptions.filter(d => d.key === data)[0].checked = true;
+    });
+
+    // Assigned to UI binding
+    this.departmentNewInfo.tecnologiesOptions = this.tecnologiesOptions;
   }
 
   clearForm() {
@@ -136,7 +171,29 @@ export class EditDepartmentComponent implements OnInit {
     this.departmentNewInfo.numberOfEmployees = '';
     this.departmentNewInfo.responsable = '';
     this.departmentNewInfo.priority = '';
-    this.departmentNewInfo.tecnologiesOptions = [];
+    this.departmentNewInfo.tecnologiesOptions = [
+      {
+        key: 'Word',
+        checked: false
+      },
+      {
+        key: 'Powerpoint',
+        checked: false
+      },
+      {
+        key: 'Excel',
+        checked: false
+      },
+      {
+        key: 'One Note',
+        checked: false
+      },
+    ];
+
+    // this.departmentNewInfo.tecnologiesOptions = this.tecnologiesOptions.map(data => {
+    //   data.checked = false
+    //   console.log(data);
+    // });
   }
 
   selectTecnologyOption(option: string) {
