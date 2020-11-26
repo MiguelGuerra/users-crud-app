@@ -64,12 +64,19 @@ export class UsersListComponent implements OnInit {
     this.iconTitle = this.displayNames.iconTitle;
   }
 
-  editUser(id: number) {
+  editUser(id) {
     this.router.navigateByUrl(`user/${id}`);
   }
 
-  deleteUser(id: number) {
-    this.mainService.deleteUserById(id);
+  deleteUser(id) {
+    this.mainService.deleteUserById(id).subscribe(data => {
+      console.log(data);
+    })
+
+    //after delete update users list
+    this.mainService.getUsers().subscribe(users => {
+      this.users = users;
+    });
   }
 
   goToAddUser() {

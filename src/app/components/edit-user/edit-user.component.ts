@@ -56,23 +56,28 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     //get the user id selected from previous page
     let userId = this.activatedRoute.snapshot.paramMap.get('id');
-    let selectedUser = this.mainService.getUserById(userId);
-    this.userId = userId;
-    this.userSelected = selectedUser;
 
-    //replicate selected user info to new user
-    this.userNewInfo.name= this.userSelected.name;
-    this.userNewInfo.email= this.userSelected.email;
-    this.userNewInfo.job= this.userSelected.job;
-    this.userNewInfo.role= this.userSelected.role;
-    this.userNewInfo.avatarUrl= this.userSelected.avatarUrl;
+    //get the user from the main service and display data on form
+    this.mainService.getUserById(userId).subscribe(user => {
+      this.userSelected = user;
+
+      //replicate selected user info to new user
+      this.userNewInfo.name= this.userSelected.name;
+      this.userNewInfo.email= this.userSelected.email;
+      this.userNewInfo.job= this.userSelected.job;
+      this.userNewInfo.role= this.userSelected.role;
+      this.userNewInfo.avatarUrl= this.userSelected.avatarUrl;
+
+      //save the initial data of user to know if data changed
+      this.userInitialInfoReceived = JSON.parse(JSON.stringify(this.userNewInfo));
+    });
+
+    this.userId = userId;
 
     this.updateLanguage(this.headerService.getLanguage());
     this.headerService.language$.subscribe(language => {
       this.updateLanguage(language);
     });
-
-    this.userInitialInfoReceived = JSON.parse(JSON.stringify(this.userNewInfo));
   }
 
   updateLanguage(language) {
@@ -107,9 +112,11 @@ export class EditUserComponent implements OnInit {
       this.userNewInfo.email,
       this.userNewInfo.job,
       this.userNewInfo.role,
-      this.userNewInfo.avatarUrl);
+      this.userNewInfo.avatarUrl).subscribe(data => {
+        console.log(data);
+        this.router.navigateByUrl('/usersList');
+      });
 
-    this.router.navigateByUrl('/usersList');
   }
 
   resetForm(){

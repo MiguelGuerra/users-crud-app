@@ -81,8 +81,10 @@ export class AddUserComponent implements OnInit {
       this.userNewInfo.email, 
       this.userNewInfo.job, 
       this.userNewInfo.role, 
-      this.userNewInfo.avatarUrl)
-      console.log(this.userNewInfo.avatarUrl);
+      this.userNewInfo.avatarUrl).subscribe(newUser => {
+        console.log(newUser);
+      })
+      
     this.router.navigateByUrl('/usersList');
   }
 

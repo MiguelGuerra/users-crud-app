@@ -37,15 +37,15 @@
                     <div class="user-card-title">{{ user.name }}</div>
                     <p class="user-id">
                         <b>{{ displayNames.id }}:</b>
-                        {{ user.id }}
+                        {{ user._id }}
                     </p>
                     <p class="user-card-text">{{ user.email }}</p>
                 </div>
                 <div class="btn-row" *ngIf="userType == 'Admin'">
-                    <button (click)="editUser(user.id)">
+                    <button (click)="editUser(user._id)">
                         <i class="fas fa-edit edit-btn"></i>
                     </button>
-                    <button (click)="openModal(user.id)">
+                    <button (click)="openModal(user._id)">
                         <i class="fas fa-trash-alt edit-btn red"></i>
                     </button>
                 </div>

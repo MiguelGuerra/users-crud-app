@@ -165,9 +165,7 @@ export class MainService implements OnInit {
     private loadingService: LoadingService,
     private http: HttpClient) { }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   //Users list services
   getUsers() {
@@ -175,52 +173,35 @@ export class MainService implements OnInit {
   }
 
   getUserById(id) {
-    let selectedUser = this.usersList.find(obj => {
-      return obj.id == id;
-    })
-    return selectedUser;
+    console.log(`${this.constantService.restUrls.editUser}/${id}`);
+    return this.http.get<User>(`${this.constantService.restUrls.editUser}/${id}`);
   }
 
   deleteUserById(id) {
-    for (var i = this.usersList.length - 1; i >= 0; --i) {
-      if (this.usersList[i].id == id) {
-        this.usersList.splice(i, 1);
-      }
+    return this.http.delete(`${this.constantService.restUrls.deleteUser}/${id}`);
+  }
+
+  updateUserById(id: string, name?: string, email?: string, job?: string, role?: string, avatarUrl?: string) {
+    const newInfoUser: User = {
+      "name": name,
+      "email": email,
+      "job": job,
+      "role": role,
+      "avatarUrl": avatarUrl
     }
+    return this.http.patch(`${this.constantService.restUrls.editUser}/${id}`, newInfoUser);
   }
-
-  updateUserById(id, name?: string, email?: string, job?: string, role?: string, avatarUrl?: string) {
-    let selectedUser = this.usersList.find(obj => {
-      return obj.id == id;
-    })
-    selectedUser.name = name;
-    selectedUser.email = email;
-    selectedUser.job = job;
-    selectedUser.role = role;
-    selectedUser.avatarUrl = avatarUrl;
-  }
-
 
   addUser(name: string, email: string, job: string, role: string, avatarUrl?: string) {
-    // let lastUserOfArray = [this.usersList.length-1];
-    // console.log(lastUserOfArray);
-    // let newId = lastUserOfArray.id + 1;
-    let numberOfUsers = this.usersList.length;
-    let newId = numberOfUsers + 1;
-    console.log(newId);
-
-    //let newId = 10;
     let createdUser = {
-      id: newId,
       name: name,
       email: email,
       job: job,
       role: role,
       avatarUrl: avatarUrl
     }
-    this.usersList.push(createdUser);
+    return this.http.post<User>(this.constantService.restUrls.createUser, createdUser);
   }
-
 
   //Departments list services
   getDepartments() {
