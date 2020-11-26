@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Department } from '../models/department.model';
 import { User } from '../models/user.model';
 import { LoadingService } from './loading.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { ConstantsService } from './constants.service';
 
 @Injectable({
   providedIn: 'root'
@@ -154,64 +158,20 @@ export class MainService implements OnInit {
     }
   ]
 
-  usersList: User[] = [
-    {
-      id: 1,
-      name: 'Miguel',
-      job: 'UI Developer',
-      email: "testxcvbn@test.com",
-      role: 'Admin',
-      avatarUrl: '../../../assets/img/avatars/avatar1.png'
-    },
-    {
-      id: 2,
-      name: 'Manuel',
-      job: 'CEO',
-      email: "testxcvbn@test.com",
-      role: 'Admin',
-      avatarUrl: '../../../assets/img/avatars/avatar3.png'
-    },
-    {
-      id: 3,
-      name: 'Surajit',
-      job: 'Front-end Developer',
-      email: "testxcvbn@test.com",
-      role: 'Normal'
-    },
-    {
-      id: 4,
-      name: 'Sergio',
-      job: 'Full stack Developer',
-      email: "testxcvbn@test.com",
-      role: 'Normal',
-      avatarUrl: '../../../assets/img/avatars/avatar2.png'
-    },
-    {
-      id: 5,
-      name: 'Sergio',
-      job: 'Full stack Developer',
-      email: "testxcvbn@test.com",
-      role: 'Normal',
-      avatarUrl: '../../../assets/img/avatars/avatar4.png'
-    },
-    {
-      id: 6,
-      name: 'Sergio',
-      job: 'Full stack Developer',
-      email: "testxcvbn@test.com",
-      role: 'Normal',
-      avatarUrl: '../../../assets/img/avatars/avatar5.png'
-    }
-  ]
+  usersList: User[] = []
 
   constructor(
-    private loadingService: LoadingService,) { }
+    private constantService: ConstantsService,
+    private loadingService: LoadingService,
+    private http: HttpClient) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    
+  }
 
-   //Users list services
-   getUsers() {
-    return this.usersList;
+  //Users list services
+  getUsers() {
+    return this.http.get<User[]>(this.constantService.restUrls.listOfUsers);
   }
 
   getUserById(id) {
@@ -229,7 +189,7 @@ export class MainService implements OnInit {
     }
   }
 
-  updateUserById(id, name?: string, email?: string, job?: string, role?: string, avatarUrl?: string ) {
+  updateUserById(id, name?: string, email?: string, job?: string, role?: string, avatarUrl?: string) {
     let selectedUser = this.usersList.find(obj => {
       return obj.id == id;
     })
@@ -240,8 +200,8 @@ export class MainService implements OnInit {
     selectedUser.avatarUrl = avatarUrl;
   }
 
-  
-  addUser(name: string, email: string, job: string, role: string, avatarUrl?: string ) {
+
+  addUser(name: string, email: string, job: string, role: string, avatarUrl?: string) {
     // let lastUserOfArray = [this.usersList.length-1];
     // console.log(lastUserOfArray);
     // let newId = lastUserOfArray.id + 1;
@@ -261,7 +221,7 @@ export class MainService implements OnInit {
     this.usersList.push(createdUser);
   }
 
-  
+
   //Departments list services
   getDepartments() {
     return this.departmentsList;
@@ -291,7 +251,7 @@ export class MainService implements OnInit {
     selectedDepartment.responsable = responsable;
   }
 
-  
+
   addDepartment(id, name: string, numberOfEmployees: number, responsable: string) {
     let numberOfDepartments = this.departmentsList.length;
     let newId = numberOfDepartments + 1;

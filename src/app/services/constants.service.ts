@@ -11,11 +11,10 @@ export class ConstantsService {
   SAMLToken =  '';
   userId = 'miguel';
   sessionId = '';
-  appUrl = '';
   countryName = '';
   userRoles = 'tecAdmin';
   fullName = 'Miguel Guerra';
-  // appUrl = 'http://sag-tec-dev-03:5555';
+  appUrl = 'http://localhost:5000';
 
   // appName = window['appName'];
   // SAMLToken =  window['SAMLToken'];
@@ -28,9 +27,10 @@ export class ConstantsService {
   //urls for the APIs
   restUrls = {
     SAMLUrl: this.appUrl,
-    listOfUsers: this.appUrl + '/api/listOfUsers',
-    createUser: this.appUrl + '/api/createUser',
-    deleteUser: this.appUrl + '/api/deleteUser',
+    listOfUsers: this.appUrl + '/api/users',
+    createUser: this.appUrl + '/api/users',
+    deleteUser: this.appUrl + '/api/users',
+    editUser: this.appUrl + '/api/users',
     listOfDepartments: this.appUrl + '/api/listOfDepartments',
     createDepartment: this.appUrl + '/api/createDepartment',
     deleteDepartment: this.appUrl + '/api/deleteDepartment'

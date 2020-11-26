@@ -42,7 +42,10 @@ export class UsersListComponent implements OnInit {
       this.updateLanguage(language);
     });
 
-    this.users = this.mainService.getUsers();
+    //get the users from the main service observable
+    this.mainService.getUsers().subscribe(users => {
+      this.users = users;
+    });
 
     //know the user type from login
     this.userType = this.headerService.getUserType()
