@@ -1,9 +1,9 @@
 export class Department {
-    id: number;
+    id?: string;
     name: string;
-    numberOfEmployees: number;
+    numberOfEmployees: string;
     responsable: string;
-    priority: string;
-    tecnologiesOptions: string[];
-    teams: {topLevel: string, lowLevel: string};
+    priority?: string;
+    tecnologiesOptions?: string[];
+    teams?: {topLevel: string, lowLevel: string};
 }

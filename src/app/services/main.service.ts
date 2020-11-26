@@ -11,154 +11,7 @@ import { ConstantsService } from './constants.service';
   providedIn: 'root'
 })
 export class MainService implements OnInit {
-  departmentsList: Department[] = [
-    {
-      id: 1,
-      name: 'Information Tecnology',
-      numberOfEmployees: 1500,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 2,
-      name: 'Human Resources',
-      numberOfEmployees: 65,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Excel', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 3,
-      name: 'Information Tecnology',
-      numberOfEmployees: 175,
-      responsable: 'Jonh Doe',
-      priority: 'High',
-      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word', 'Excel'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 4,
-      name: 'Human Resources',
-      numberOfEmployees: 53,
-      responsable: 'Jonh Doe',
-      priority: 'High',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 5,
-      name: 'Information Tecnology',
-      numberOfEmployees: 5,
-      responsable: 'Jonh Doe',
-      priority: 'High',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 6,
-      name: 'Human Resources',
-      numberOfEmployees: 54,
-      responsable: 'Jonh Doe',
-      priority: 'Medium',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 7,
-      name: 'Information Tecnology',
-      numberOfEmployees: 1445,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 8,
-      name: 'Human Resources',
-      numberOfEmployees: 5876,
-      responsable: 'Jonh Doe',
-      priority: 'High',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 9,
-      name: 'Information Tecnology',
-      numberOfEmployees: 15,
-      responsable: 'Jonh Doe',
-      priority: 'Medium',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 10,
-      name: 'Human Resources',
-      numberOfEmployees: 5,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 11,
-      name: 'Information Tecnology',
-      numberOfEmployees: 15,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Powerpoint', 'One Note'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    },
-    {
-      id: 12,
-      name: 'Human Resources',
-      numberOfEmployees: 5,
-      responsable: 'Jonh Doe',
-      priority: 'Low',
-      tecnologiesOptions: ['Powerpoint', 'One Note', 'Word'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
-    }
-  ]
-
-  usersList: User[] = []
+  departmentsList: Department[] = []
 
   constructor(
     private constantService: ConstantsService,
@@ -173,7 +26,6 @@ export class MainService implements OnInit {
   }
 
   getUserById(id) {
-    console.log(`${this.constantService.restUrls.editUser}/${id}`);
     return this.http.get<User>(`${this.constantService.restUrls.editUser}/${id}`);
   }
 
@@ -204,51 +56,34 @@ export class MainService implements OnInit {
   }
 
   //Departments list services
-  getDepartments() {
-    return this.departmentsList;
+  getDepartments() { 
+    return this.http.get<Department[]>(this.constantService.restUrls.listOfDepartments);
   }
 
   getDepartmentById(id) {
-    let selectedDepartment = this.departmentsList.find(obj => {
-      return obj.id == id;
-    })
-    return selectedDepartment;
+    return this.http.get<Department>(`${this.constantService.restUrls.editDepartment}/${id}`);
   }
 
   deleteDepartmentById(id) {
-    for (var i = this.departmentsList.length - 1; i >= 0; --i) {
-      if (this.departmentsList[i].id == id) {
-        this.departmentsList.splice(i, 1);
-      }
+    return this.http.delete(`${this.constantService.restUrls.deleteDepartment}/${id}`);
+  }
+
+  updateDepartmentById(id: string, name: string, numberOfEmployees: string, responsable: string) {
+    const newInfoDepartment: Department = {
+      "name": name,
+      "numberOfEmployees": numberOfEmployees,
+      "responsable": responsable
     }
-  }
-
-  updateDepartmentById(id, name: string, numberOfEmployees: number, responsable: string) {
-    let selectedDepartment = this.departmentsList.find(obj => {
-      return obj.id == id;
-    })
-    selectedDepartment.name = name;
-    selectedDepartment.numberOfEmployees = numberOfEmployees;
-    selectedDepartment.responsable = responsable;
+    return this.http.patch(`${this.constantService.restUrls.editDepartment}/${id}`, newInfoDepartment);
   }
 
 
-  addDepartment(id, name: string, numberOfEmployees: number, responsable: string) {
-    let numberOfDepartments = this.departmentsList.length;
-    let newId = numberOfDepartments + 1;
-
+  addDepartment(id:string, name: string, numberOfEmployees: number, responsable: string) {
     let createdDepartment = {
-      id: newId,
       name: name,
       numberOfEmployees: numberOfEmployees,
-      responsable: responsable,
-      priority: 'Low',
-      tecnologiesOptions: ['HR', 'IT', 'Arts'],
-      teams: {
-        topLevel: 'Team 1',
-        lowLevel: ' Team 2'
-      }
+      responsable: responsable
     }
-    this.departmentsList.push(createdDepartment);
+    return this.http.post<Department>(this.constantService.restUrls.createDepartment, createdDepartment);
   }
 }

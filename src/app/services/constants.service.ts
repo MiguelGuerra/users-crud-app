@@ -31,9 +31,10 @@ export class ConstantsService {
     createUser: this.appUrl + '/api/users',
     deleteUser: this.appUrl + '/api/users',
     editUser: this.appUrl + '/api/users',
-    listOfDepartments: this.appUrl + '/api/listOfDepartments',
-    createDepartment: this.appUrl + '/api/createDepartment',
-    deleteDepartment: this.appUrl + '/api/deleteDepartment'
+    listOfDepartments: this.appUrl + '/api/departments',
+    createDepartment: this.appUrl + '/api/departments',
+    deleteDepartment: this.appUrl + '/api/departments',
+    editDepartment: this.appUrl + '/api/departments',
   };
 
   //Translations en/ar

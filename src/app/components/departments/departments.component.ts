@@ -30,7 +30,7 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
   showModal: boolean = false;
 
   departmentsList: Department[] = [];
-  selectedDepartmentId: number;
+  selectedDepartmentId;
 
   displayedColumns: string[] = ['id', 'name', 'numberOfEmployees', 'responsable', 'actions'];
   dataSource: MatTableDataSource<Department>;
@@ -52,16 +52,22 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.updateLanguage(this.headerService.getLanguage());
+
     //for the confirmation modal component
     this.displayNamesConfirmationModal = this.constantService.displayNames[this.language]['modalText'];
 
     this.headerService.language$.subscribe(language => {
       this.updateLanguage(language);
     });
-    this.departmentsList = this.mainService.getDepartments();
+
     //know the user type from login
-    this.userType = this.headerService.getUserType()
-    this.dataSource = new MatTableDataSource(this.departmentsList);
+    this.userType = this.headerService.getUserType();
+
+    //get all departments
+    this.mainService.getDepartments().subscribe(departments => {
+      this.departmentsList = departments;
+      this.dataSource = new MatTableDataSource(this.departmentsList);
+    });
   }
 
   updateLanguage(language) {
@@ -93,12 +99,21 @@ export class DepartmentsComponent implements OnInit, AfterViewInit {
   }
 
   handleDeleteConfirm() {
-    this.deleteDepartment(this.selectedDepartmentId);
-    this.showModal = false;
-    //to update the paginator and table data
-    this.dataSource = new MatTableDataSource(this.departmentsList);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.mainService.deleteDepartmentById(this.selectedDepartmentId).subscribe(data => {
+      console.log(data);
+      this.showModal = false;
+
+      //to update the paginator and table data
+      this.dataSource = new MatTableDataSource(this.departmentsList);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      //get all departments again
+      this.mainService.getDepartments().subscribe(departments => {
+        this.departmentsList = departments;
+        this.dataSource = new MatTableDataSource(this.departmentsList);
+      });
+    })
   }
 
   handleModalClose() {

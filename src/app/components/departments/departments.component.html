@@ -18,7 +18,7 @@
         <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="id-header"> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                <td mat-cell *matCellDef="let row"> {{row._id}} </td>
             </ng-container>
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="name-header"> Name </th>
@@ -36,8 +36,8 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef class="actions-header"> Actions </th>
                 <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" class="edit-btn" (click)="goToEditDepartment(row.id)">Edit</button>
-                    <button mat-raised-button color="warn" class="delete-btn" (click)="openModal(row.id)">Delete</button>
+                    <button mat-raised-button color="primary" class="edit-btn" (click)="goToEditDepartment(row._id)">Edit</button>
+                    <button mat-raised-button color="warn" class="delete-btn" (click)="openModal(row._id)">Delete</button>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

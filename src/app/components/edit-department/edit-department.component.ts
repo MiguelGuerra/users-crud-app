@@ -82,18 +82,27 @@ export class EditDepartmentComponent implements OnInit {
 
   ngOnInit(): void {//get the department id selected from previous page
     let departmentId = this.activatedRoute.snapshot.paramMap.get('id');
-    let selectedDepartment = this.mainService.getDepartmentById(departmentId);
+
+    //get the user from the main service and display data on form
+    console.log(departmentId);
+    this.mainService.getDepartmentById(departmentId).subscribe(department => {
+      this.departmentSelected = department;
+
+      //replicate selected department info to new department
+      this.departmentNewInfo.name = this.departmentSelected.name;
+      this.departmentNewInfo.numberOfEmployees = this.departmentSelected.numberOfEmployees;
+      this.departmentNewInfo.responsable = this.departmentSelected.responsable;
+      this.departmentNewInfo.priority = this.departmentSelected.priority;
+
+      // Copying to received to a new variable
+      this.technologiesOptionsReceived = this.departmentSelected.tecnologiesOptions;
+
+      //check if info was changed from intial data
+      this.departmentInitialInfoReceived = JSON.parse(JSON.stringify(this.departmentNewInfo));
+    });
+
     this.departmentId = departmentId;
-    this.departmentSelected = selectedDepartment;
-
-    //replicate selected department info to new department
-    this.departmentNewInfo.name = this.departmentSelected.name;
-    this.departmentNewInfo.numberOfEmployees = this.departmentSelected.numberOfEmployees;
-    this.departmentNewInfo.responsable = this.departmentSelected.responsable;
-    this.departmentNewInfo.priority = this.departmentSelected.priority;
-
-    // Copying to received to a new variable
-    this.technologiesOptionsReceived = this.departmentSelected.tecnologiesOptions;
+    
     // Assign required option to checked
     this.technologiesOptionsReceived.map(data => {
       this.tecnologiesOptions.filter(d => d.key === data)[0].checked = true;
@@ -108,9 +117,6 @@ export class EditDepartmentComponent implements OnInit {
 
     //know the user type from login
     this.userType = this.headerService.getUserType()
-
-    //check if info was changed from intial data
-    this.departmentInitialInfoReceived = JSON.parse(JSON.stringify(this.departmentNewInfo));
   }
 
   updateLanguage(language) {
