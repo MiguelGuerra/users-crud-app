@@ -171,29 +171,7 @@ export class EditDepartmentComponent implements OnInit {
     this.departmentNewInfo.numberOfEmployees = '';
     this.departmentNewInfo.responsable = '';
     this.departmentNewInfo.priority = '';
-    this.departmentNewInfo.tecnologiesOptions = [
-      {
-        key: 'Word',
-        checked: false
-      },
-      {
-        key: 'Powerpoint',
-        checked: false
-      },
-      {
-        key: 'Excel',
-        checked: false
-      },
-      {
-        key: 'One Note',
-        checked: false
-      },
-    ];
-
-    // this.departmentNewInfo.tecnologiesOptions = this.tecnologiesOptions.map(data => {
-    //   data.checked = false
-    //   console.log(data);
-    // });
+    this.departmentNewInfo.tecnologiesOptions.map(data => data.checked = false);
   }
 
   selectTecnologyOption(option: string) {
