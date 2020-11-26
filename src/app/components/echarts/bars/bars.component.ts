@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/services/echarts.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-bars',
@@ -14,12 +15,14 @@ export class BarsComponent implements OnInit {
   isDarkMode: boolean = false;
   _theme: string;
 
-  constructor(private echartService: EchartsService) { }
+  constructor(
+    private mainService: MainService,
+    private echartService: EchartsService) { }
 
   ngOnInit(): void {
-    this.subscription = this.echartService.getBasicLineEchartData().subscribe(data => {
+    this.subscription = this.mainService.getBarChartData().subscribe(data => {
       this._initBasicBarsEchart(data);
-    });
+    })
   }
 
   ngOnDestroy() {
@@ -29,17 +32,27 @@ export class BarsComponent implements OnInit {
   }
 
   private _initBasicBarsEchart(chartData) {
+    const arrayOfNames: string[] = [];
+    const arrayOfData: string[] = [];
+
+    chartData.map( data => {
+      arrayOfNames.push(data.name);
+    });
+
+    chartData.map(data => {
+      arrayOfData.push(data.value);
+    })
 
     this._chartOption = {
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: arrayOfNames
       },
       yAxis: {
         type: 'value'
       },
       series: [{
-        data: [120, 200, 150, 80, 70, 110, 130],
+        data: arrayOfData,
         type: 'bar'
       }]
     }

@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/services/echarts.service';
 import { LineEchartModel } from 'src/app/models/line-echart.model';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-pie',
@@ -16,12 +17,13 @@ export class PieComponent implements OnInit, OnDestroy {
   isDarkMode: boolean = false;
   _theme: string;
 
-  constructor(private echartService: EchartsService) { }
+  constructor(
+    private mainService: MainService) { }
 
   ngOnInit(): void {    
-    this.subscription = this.echartService.getBasicLineEchartData().subscribe(data => {
+    this.subscription = this.mainService.getPieChartData().subscribe(data => {
       this._initBasicPieEchart(data);
-    });
+    })
 
   }
 

@@ -35,6 +35,9 @@ export class ConstantsService {
     createDepartment: this.appUrl + '/api/departments',
     deleteDepartment: this.appUrl + '/api/departments',
     editDepartment: this.appUrl + '/api/departments',
+    dashboardLineData: this.appUrl + '/api/dashboard/lineChartData',
+    dashboardPieData: this.appUrl + '/api/dashboard/pieChartData',
+    dashboardBarData: this.appUrl + '/api/dashboard/barChartData'
   };
 
   //Translations en/ar

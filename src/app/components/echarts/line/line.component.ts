@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { EChartOption } from 'echarts';
 import { EchartsService } from 'src/app/services/echarts.service';
 import { LineEchartModel } from 'src/app/models/line-echart.model';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-line',
@@ -15,13 +16,14 @@ export class LineComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isDarkMode: boolean = false;
   _theme: string;
-  constructor(private echartService: EchartsService) { }
+  constructor(
+    private mainService: MainService,
+    private echartService: EchartsService) { }
 
   ngOnInit(): void {    
-    this.subscription = this.echartService.getBasicLineEchartData().subscribe(data => {
+    this.subscription = this.mainService.getLineChartData().subscribe(data => {
       this._initBasicLineEchart(data);
-    });
-
+    })
   }
 
   ngOnDestroy() {
@@ -31,7 +33,6 @@ export class LineComponent implements OnInit, OnDestroy {
   }
 
   private _initBasicLineEchart(chartData: LineEchartModel[]) {
-
     this._chartOption = {
       tooltip: {
         show: true

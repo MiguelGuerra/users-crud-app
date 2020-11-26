@@ -6,16 +6,14 @@ import { LoadingService } from './loading.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { ConstantsService } from './constants.service';
+import { LineEchartModel } from '../models/line-echart.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService implements OnInit {
-  departmentsList: Department[] = []
-
   constructor(
     private constantService: ConstantsService,
-    private loadingService: LoadingService,
     private http: HttpClient) { }
 
   ngOnInit() {}
@@ -85,5 +83,18 @@ export class MainService implements OnInit {
       responsable: responsable
     }
     return this.http.post<Department>(this.constantService.restUrls.createDepartment, createdDepartment);
+  }
+
+  //charts data services
+  getLineChartData() { 
+    return this.http.get<LineEchartModel[]>(this.constantService.restUrls.dashboardLineData);
+  }
+
+  getPieChartData() {
+    return this.http.get<LineEchartModel[]>(this.constantService.restUrls.dashboardPieData);
+  }
+
+  getBarChartData() {
+    return this.http.get<LineEchartModel[]>(this.constantService.restUrls.dashboardBarData);
   }
 }
