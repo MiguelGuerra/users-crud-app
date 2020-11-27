@@ -1,0 +1,92 @@
+<div class="login-wrapper">
+    <mat-card class="login-card">
+        <mat-card-content>
+            <mat-card-title>{{ haveAccount ? 'Login' : 'SignUp' }}</mat-card-title>
+            <mat-card-subtitle>Please enter the field below to acess</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-content>
+            <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="haveAccount">
+                <mat-form-field class="full-width">
+                    <mat-label>User</mat-label>
+                    <input 
+                        ngModel 
+                        name="email" 
+                        id="email" 
+                        matInput 
+                        required
+                        placeholder="Ex. User">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input 
+                        ngModel 
+                        name="password" 
+                        id="password" 
+                        matInput 
+                        required
+                        type="password">
+                </mat-form-field>
+                <mat-error *ngIf="!loginForm.valid && loginForm.touched">Please enter all fields above</mat-error>
+                <div>
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        class="align-right"
+                        type="submit">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <form (ngSubmit)="onSignUp(signUp)" #signUp="ngForm" *ngIf="!haveAccount">
+                <mat-form-field class="full-width">
+                    <mat-label>User</mat-label>
+                    <input 
+                        ngModel 
+                        name="email" 
+                        id="email" 
+                        matInput 
+                        required
+                        email
+                        placeholder="Ex. User">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input 
+                        ngModel 
+                        name="password" 
+                        id="password" 
+                        matInput 
+                        required
+                        type="password">
+                </mat-form-field>
+                <mat-error *ngIf="!signUp.valid && signUp.touched">Please enter all fields above</mat-error>
+                <div>
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        class="align-right"
+                        type="submit">
+                        {{haveAccount ? 'Login' : 'Sign up'}}
+                    </button>
+                </div>
+            </form>
+            <div *ngIf="signUpError != null" >
+                <mat-error>{{ signUpError }}</mat-error>
+            </div>
+            <div *ngIf="signUpSuccess != null" >
+                <span>{{ signUpSuccess }}</span>
+            </div>
+            <div *ngIf="haveAccount">
+                <span>
+                    Don´t have an anccount? 
+                    <a [routerLink]="" (click)="changeToSignUpMode()">Sign up</a></span>
+            </div> 
+            <div *ngIf="!haveAccount">
+                <span>
+                    Already are a member? 
+                    <a [routerLink]="" (click)="changeToLoginMode()">Login</a></span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+</div>

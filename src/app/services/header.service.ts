@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class HeaderService {
+  isLoggedIn: boolean = false;
+  
   //Admin or Tec
   userType = 'Admin';
   language = 'en';

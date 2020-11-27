@@ -1,0 +1,19 @@
+@import '../../../assets/scss/variables.scss';
+
+.login-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .login-card {
+        width: 70%;
+        margin: 0 auto;
+        max-width: 400px;
+        padding: 50px;
+        color: $color1;
+    }
+    .align-right {
+        float: right;
+    }
+}
+  
