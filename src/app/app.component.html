@@ -1,12 +1,1 @@
-<div *ngIf="isLoggedIn; then mainApp else loginScreen"></div>
-<ng-template #mainApp>
-  <app-header></app-header>
-  <div class="main-wrapper">
-    <router-outlet></router-outlet>
-  </div>
-  <app-footer></app-footer>
-  <app-loading></app-loading>
-</ng-template>
-<ng-template #loginScreen>
-  <app-login></app-login>
-</ng-template>
+<router-outlet></router-outlet>

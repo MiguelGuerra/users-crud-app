@@ -27,6 +27,8 @@ export class ConstantsService {
   //urls for the APIs
   restUrls = {
     SAMLUrl: this.appUrl,
+    registerUser: this.appUrl + '/api/auth/register',
+    loginUser: this.appUrl +  '/api/auth/login',
     listOfUsers: this.appUrl + '/api/users',
     createUser: this.appUrl + '/api/users',
     deleteUser: this.appUrl + '/api/users',

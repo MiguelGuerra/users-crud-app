@@ -6,28 +6,28 @@
         <a 
           class="effect-underline"
           [ngClass]="tabName == 'dashboard' ? 'active-link' : ''" 
-          routerLink="dashboard" 
+          routerLink="/dashboard" 
           (click)="updateTabName('dashboard')">{{displayNames.dashboard}}</a>
       </div>
       <div class="nav-tab">
         <a 
           class="effect-underline"
           [ngClass]="tabName == 'users' ? 'active-link' : ''" 
-          routerLink="usersList" 
+          routerLink="/usersList" 
           (click)="updateTabName('users')">{{displayNames.users}}</a>
       </div>
       <div class="nav-tab">
         <a 
           class="effect-underline" 
           [ngClass]="tabName == 'departments' ? 'active-link' : ''" 
-          routerLink="departments"
+          routerLink="/departments"
           (click)="updateTabName('departments')">{{displayNames.departments}}</a>
       </div>
       <div class="nav-tab">
         <a 
           class="effect-underline"
           [ngClass]="tabName == 'about' ? 'active-link' : ''" 
-          routerLink="about" 
+          routerLink="/about" 
           (click)="updateTabName('about')">{{displayNames.about}}</a>
       </div>
     </div>

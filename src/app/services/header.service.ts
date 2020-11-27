@@ -8,7 +8,9 @@ export class HeaderService {
   isLoggedIn: boolean = false;
   
   //Admin or Tec
-  userType = 'Admin';
+  userType: string = '';
+  userToken: string = '';
+  
   language = 'en';
   language$: BehaviorSubject<string> = new BehaviorSubject('en');
   tabName: string = 'dashboard';

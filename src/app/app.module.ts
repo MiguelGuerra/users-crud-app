@@ -40,6 +40,7 @@ import { HttpClientModule }  from '@angular/common/http';
 import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
 import { BarsComponent } from './components/echarts/bars/bars.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { LoginComponent } from './components/login/login.component';
     DashboardComponent,
     EditDepartmentComponent,
     BarsComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
