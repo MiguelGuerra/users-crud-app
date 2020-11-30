@@ -4,7 +4,7 @@
             <mat-card-title>{{ haveAccount ? 'Login' : 'SignUp' }}</mat-card-title>
             <mat-card-subtitle>Please enter the field below to acess</mat-card-subtitle>
         </mat-card-content>
-        <mat-card-content>
+        <mat-card-content style="margin-bottom: 30px;">
             <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="haveAccount">
                 <mat-form-field class="full-width">
                     <mat-label>User</mat-label>
@@ -87,6 +87,12 @@
                     <a [routerLink]="" (click)="changeToLoginMode()">Login</a></span>
             </div>
         </mat-card-content>
+        <div *ngIf="formHasError" class="error-message">
+            {{errorMessage}}
+        </div>
+        <div *ngIf="formSuccess" class="success-message">
+            {{successMessage}}
+        </div>
     </mat-card>
     
 </div>

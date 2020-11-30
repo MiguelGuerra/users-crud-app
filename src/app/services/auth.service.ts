@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   registerUser(email: string, password: string) {
-    return this.http.post(this.constantsService.restUrls.registerUser, {
+    return this.http.post<AccountUser>(this.constantsService.restUrls.registerUser, {
       email: email,
       password: password
     });

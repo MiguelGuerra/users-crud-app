@@ -14,6 +14,12 @@ export class LoginComponent implements OnInit {
   signUpSuccess: string = '';
   signUpError: string;
 
+  formHasError: boolean = false;
+  errorMessage: string;
+
+  formSuccess: boolean = false;
+  successMessage: string;
+
   constructor(
     private router: Router,
     private headerService: HeaderService,
@@ -33,9 +39,20 @@ export class LoginComponent implements OnInit {
     
     this.authService.registerUser(email, password).subscribe(data => {
       console.log(data);
+      if(data.success) {
+        this.successMessage = 'User created with success! Please login'
+        this.formSuccess = true;
+
+      } else {
+        this.formSuccess = false;
+        this.formHasError = true;
+
+      }
+
     })
 
     submittedForm.reset();
+    this.changeToLoginMode();
   }
 
   onLogin(submittedForm: NgForm) {
@@ -47,16 +64,25 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.loginUser(email, password).subscribe(res => {
-      //console.log(res);
-      // console.log(res.success + " -> " + res.token  + " -> " +  res.role)
-      if(res.success && res.token && res.role) {
+      if(res.success && res.token) {
+        //to remove the success message from signup
+        this.formSuccess = false;
+
         this.headerService.isLoggedIn = true;
         this.headerService.userType = res.role;
         this.headerService.userToken = res.token;
-
+        
+        //if login is success go to dashboard of app
         this.router.navigateByUrl('/dashboard')
-
+        this.formHasError = false;
         console.log(this.headerService.isLoggedIn, this.headerService.userType)
+      } else {
+        //to remove the success message from signup
+        this.formSuccess = false;
+
+        this.errorMessage = 'Error on login';
+        this.formHasError = true;
+        console.log(res);
       }
       
     })

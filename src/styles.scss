@@ -16,5 +16,25 @@ html, body {
     .full-width {
         width: 100%;
     }
+    .error-message {
+        font-weight: 400;
+        padding: 11px 7px;
+        border-radius: 2px;
+        font-size: 15px;
+        color: #D8000C;
+        background-color: rgb(255,186,186, .9);
+        margin-top: 10px;
+    }
+    .success-message {
+        font-weight: 300;
+        padding: 11px 7px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        border-radius: 2px;
+        font-size: 15px;
+        color: #4F8A10;
+        background-color: rgba(223,242,191, .9);
+        margin-top: 10px;
+    }
 }
 
