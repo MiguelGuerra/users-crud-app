@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConstantsService } from 'src/app/services/constants.service';
 import { HeaderService } from 'src/app/services/header.service';
 
@@ -12,8 +13,10 @@ export class UserInfoComponent implements OnInit {
   pageName = 'userInfo';
   displayNames:any = {};
   userType = '';
+  userName: string = '';
 
   constructor(
+    private router: Router,
     private constantService: ConstantsService,
     private headerService: HeaderService) { }
 
@@ -22,10 +25,17 @@ export class UserInfoComponent implements OnInit {
     this.headerService.language$.subscribe(language => {
       this.updateLanguage(language);
     });
+    console.log('----', this.headerService.getUserName())
+    this.userName = this.headerService.getUserName();
   }
   
   updateLanguage(language) {
     this.language = language;
     this.displayNames = this.constantService.displayNames[this.language][this.pageName];
+  }
+
+  logout() {
+    this.router.navigateByUrl('/login'); 
+    this.headerService.setLogin(false);
   }
 }

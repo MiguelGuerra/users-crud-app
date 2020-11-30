@@ -6,11 +6,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HeaderService {
   isLoggedIn: boolean = false;
-  
+
   //Admin or Tec
   userType: string = '';
   userToken: string = '';
-  
+  userName: string = '';
+
   language = 'en';
   language$: BehaviorSubject<string> = new BehaviorSubject('en');
   tabName: string = 'dashboard';
@@ -26,7 +27,7 @@ export class HeaderService {
   setUserType(type) {
     this.userType = type;
   }
-  
+
   // Method for getting language
   getLanguage() {
     return this.language;
@@ -40,5 +41,20 @@ export class HeaderService {
   // Method for seting tabname
   setTabName(tabName) {
     this.tabName = tabName;
+  }
+
+  //set user name after login
+  setUserName(name: string) {
+    this.userName = name;
+  }
+
+  //get user name after login
+  getUserName() {
+    return this.userName;
+  }
+
+  //set user logged in
+  setLogin(state: boolean) {
+    this.isLoggedIn = state;
   }
 }

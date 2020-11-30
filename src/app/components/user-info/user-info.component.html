@@ -6,11 +6,11 @@
         <div class="user-icon">
             <i class="fas fa-user-circle"></i>
             <span>
-                Miguel Guerra
+                {{userName}}
             </span>
         </div>
         <div class="logout">
-            <a>{{displayNames.logout}}</a>
+            <a (click)="logout()">{{displayNames.logout}}</a>
         </div>
     </div>
 </div>

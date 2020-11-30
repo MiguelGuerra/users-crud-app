@@ -72,17 +72,21 @@ export class LoginComponent implements OnInit {
         this.headerService.userType = res.role;
         this.headerService.userToken = res.token;
         
+        //save the user name on header service
+        this.headerService.setUserName(res.email);
+
         //if login is success go to dashboard of app
         this.router.navigateByUrl('/dashboard')
         this.formHasError = false;
         console.log(this.headerService.isLoggedIn, this.headerService.userType)
+
+        this.headerService.setLogin(true);
       } else {
         //to remove the success message from signup
         this.formSuccess = false;
 
         this.errorMessage = 'Error on login';
         this.formHasError = true;
-        console.log(res);
       }
       
     })
