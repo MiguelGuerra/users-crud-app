@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [LoggedInGuard],
+    //canActivate: [LoggedInGuard],
     children: [
     {
       path: 'usersList',

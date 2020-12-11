@@ -50,6 +50,7 @@
     flex-direction: column;
     overflow: hidden;
     position:relative;
+    min-height: 390px;
   }
   
   .user-card-cont {
@@ -90,7 +91,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     padding-top: 13px;
-    line-height:14px;
+    line-height: 1;
   }
   .user-card-text {
     text-align: center;
