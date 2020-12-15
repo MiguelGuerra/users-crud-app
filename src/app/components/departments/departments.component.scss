@@ -3,24 +3,27 @@
     table {
         width: 100%;
       }
+      .cdk-column-actions {
+        min-width: 150px;
+      }
+      .cdk-column-id {
+        min-width: 260px;
+      }
       .mat-form-field {
         font-size: 18px;
         width: 20%;
       }
       .id-header {
-        width: 5%;
+        width: 10%;
       }
       .name-header {
-        width: 35%;
+        width: 30%;
       }
       .employees-header {
         width: 20%;
       }
       .responsable-header {
         width: 25%;
-      }
-      .action-header {
-        width: 20%;
       }
       button {
         line-height: 2.3;
@@ -36,6 +39,17 @@
     table {
       th {
         text-align: right;
+      }
+      th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-right: 24px;
+        padding-left: 0;
+      }
+      th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+        min-width: 190px;
+        padding-left: 0;
+      }
+      .cdk-header-cell.mat-column-actions {
+        padding-right: 37px;
       }
     }
     .edit-btn {
